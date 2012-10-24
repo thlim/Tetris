@@ -1,5 +1,5 @@
 package model;
 
-public class Brick
+public class Map
 {
 }

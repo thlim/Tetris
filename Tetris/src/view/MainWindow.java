@@ -1,5 +1,5 @@
 package view;
 
-public class MainWindow {
-
+public class MainWindow
+{
 }
