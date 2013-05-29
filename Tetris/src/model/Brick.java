@@ -12,7 +12,6 @@ public class Brick
 	
 	private Brick(){
 		
-		
 		reset();	
 		
 	}
@@ -29,6 +28,8 @@ public class Brick
 	public void reset(){
 		scene = rand();
 		form = new boolean [4][4];
+		posX = 4;
+		posY = 0;
 		
 		switch(scene){
 		

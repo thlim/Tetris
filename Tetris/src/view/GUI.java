@@ -3,11 +3,14 @@ package view;
 import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import model.Map;
 import model.Brick;
 
-public class GUI extends Frame
+public class GUI extends Frame implements KeyListener
 {
 	private static final long serialVersionUID = 1L;
 	Map 	map;
@@ -15,6 +18,7 @@ public class GUI extends Frame
 	
 	public GUI()
 	{
+		addKeyListener(this);
 		map = Map.getInstance();
 		activeBrick = Brick.getInstance();
 		setSize(800, 600);
@@ -109,5 +113,35 @@ public class GUI extends Frame
 		{
 			g.drawLine(0 + x, i * 30 + y, 300 + x, i * 30 + y);
 		}
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e)
+	{
+		switch(e.getKeyCode())
+		{
+		case 27:
+			System.exit(0);
+			break;
+		case 37:
+			--activeBrick.posX;
+			break;
+		case 39:
+			++activeBrick.posX;
+			break;
+		}
+		repaint();
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
