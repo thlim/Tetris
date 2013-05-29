@@ -4,7 +4,7 @@ import java.math.*;
 public class Brick
 {
 	
-	private boolean form [][];
+	public boolean form [][];
 	private int fieldcount;
 	private int last[];
 	
@@ -32,7 +32,7 @@ public class Brick
 				if(fieldcount <= 4){
 					form[x][y] = rand();
 					if(form[x][y] == true){
-						
+						/*
 						if (last[1] == y && (x - last[0]) > 1 ){
 							form[x][y] = false;
 							continue;
@@ -42,7 +42,7 @@ public class Brick
 							continue;
 							
 						}
-						else fieldcount++;
+						else*/ fieldcount++;
 						last[0] = x;
 						last[1] = y;
 						continue;
@@ -63,7 +63,7 @@ public class Brick
 		if(a == 1){
 			return false;	
 		}
-		return true;
+		else return true;
 		
 		
 	}
