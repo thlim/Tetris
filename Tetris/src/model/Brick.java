@@ -33,11 +33,11 @@ public class Brick
 					form[x][y] = rand();
 					if(form[x][y] == true){
 						
-						if (last[1] == y && last[0] <= (x - 2)){
+						if (last[1] == y && (x - last[0]) > 1 ){
 							form[x][y] = false;
 							continue;
 						}
-						else if(last[0] == x && last[1] <= (y - 2)){
+						else if(last[0] == x && (y - last[1]) > 1){
 							form[x][y] = false;
 							continue;
 							
