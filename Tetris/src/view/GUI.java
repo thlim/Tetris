@@ -4,15 +4,19 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
 
+import model.Map;
 import model.Brick;
 
 public class GUI extends Frame
 {
 	private static final long serialVersionUID = 1L;
-	Brick b;
+	Map 	map;
+	Brick 	activeBrick;
+	
 	public GUI()
 	{
-		b  = new Brick();
+		map = Map.getInstance();
+		activeBrick = Brick.getInstance();
 		setSize(800, 600);
 		setLocation(0, 0);
 		setResizable(false);
@@ -43,17 +47,55 @@ public class GUI extends Frame
 			}
 		}*/
 		
+		// DRAWING MAP
+		for(int j = 0; j < 18; ++j)
+		{
+			for(int i = 0; i < 10; ++i)
+			{
+				if(map.get(i,  j) == true)
+				{
+					g.setColor(Color.red);
+					g.fillRect(i * 30 + x, j * 30 + y, 30, 30);
+				}
+			}
+		}
+		
+		// DRAWING ACTIVE BRICK
 		for(int j = 0; j < 4; ++j)
 		{
 			for(int i = 0; i < 4; ++i)
 			{
-				if(b.form[j][i] == true)
+				if(activeBrick.form[i][j] == true)
 				{
-					g.setColor(Color.red);
-					g.fillRect(j * 30 + x, i * 30 + y, 30, 30);
+					switch(activeBrick.scene)
+					{
+					case 0:
+						g.setColor(Color.red);
+						break;
+					case 1:
+						g.setColor(Color.green);
+						break;
+					case 2:
+						g.setColor(Color.blue);
+						break;
+					case 3:
+						g.setColor(Color.magenta);
+						break;
+					case 4:
+						g.setColor(Color.orange);
+						break;
+					case 5:
+						g.setColor(Color.cyan);
+						break;
+					case 6:
+						g.setColor(Color.pink);
+						break;
+					}
+					g.fillRect((activeBrick.posX + i) * 30 + x, (activeBrick.posY + j) * 30 + y, 30, 30);
 				}
 			}
 		}
+		
 		// DRAWING BORDERS AT THE END
 		g.setColor(Color.black);
 		g.drawLine(500, 0, 500, 600);

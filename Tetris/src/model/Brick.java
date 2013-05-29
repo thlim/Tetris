@@ -3,14 +3,27 @@ import java.math.*;
 
 public class Brick
 {
-	
+	private static Brick instance = null;
 	public boolean form [][];
-	private int scene;
+	public int scene;
+	public int posX;
+	public int posY;
+	public int style;
 	
-	public Brick(){
+	private Brick(){
 		
-	reset();	
 		
+		reset();	
+		
+	}
+	
+	public static Brick getInstance()
+	{
+		if(instance == null)
+		{
+			return instance = new Brick();
+		}
+		return instance;
 	}
 	
 	public void reset(){

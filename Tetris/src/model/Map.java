@@ -4,7 +4,7 @@ public class Map
 {
 	private static Map instance = null;
 
-	public Map getInstance()
+	public static Map getInstance()
 	{
 		if(instance == null)
 		{
@@ -13,7 +13,7 @@ public class Map
 		return instance;
 	}
 
-	private boolean map[][];
+	private static boolean map[][];
 	
 	private Map()
 	{
@@ -23,6 +23,20 @@ public class Map
 			for(int x = 0; x < 10; ++x)
 			{
 				map[x][y] = false;
+			}
+		}
+	}
+	
+	public void addBrick(Brick b)
+	{
+		for(int y = 0; y < 4; ++y)
+		{
+			for(int x = 0; x < 4; ++x)
+			{
+				if(b.form[x][y] == true && (b.posY + y) < 18 && (b.posX + x) < 10)
+				{
+					map[b.posX + x][b.posY + y] = true;
+				}
 			}
 		}
 	}
