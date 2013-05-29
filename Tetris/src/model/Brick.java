@@ -59,8 +59,7 @@ public class Brick
 		
 	}
 	private boolean rand(){
-		int a = (int) (Math.random() * (2 - 1) + 1);
-		if(a == 1){
+		if( Math.random() < 0.5 ){
 			return false;	
 		}
 		else return true;
