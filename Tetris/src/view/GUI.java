@@ -4,12 +4,15 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
 
+import model.Brick;
+
 public class GUI extends Frame
 {
 	private static final long serialVersionUID = 1L;
-
+	Brick b;
 	public GUI()
 	{
+		b  = new Brick();
 		setSize(800, 600);
 		setLocation(0, 0);
 		setResizable(false);
@@ -39,6 +42,18 @@ public class GUI extends Frame
 				g.fillRect(j * 30 + x, i * 30 + y, 30, 30);
 			}
 		}*/
+		
+		for(int j = 0; j < 4; ++j)
+		{
+			for(int i = 0; i < 4; ++i)
+			{
+				if(b.form[j][i] == true)
+				{
+					g.setColor(Color.red);
+					g.fillRect(j * 30 + x, i * 30 + y, 30, 30);
+				}
+			}
+		}
 		// DRAWING BORDERS AT THE END
 		g.setColor(Color.black);
 		g.drawLine(500, 0, 500, 600);

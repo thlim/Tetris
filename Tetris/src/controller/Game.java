@@ -52,9 +52,10 @@ public class Game
 			switch(state)
 			{
 			case 0:
-				if(time > 1000)
+				if(time >= 1000)
 				{
 					gui.repaint();
+					System.out.println("time: " + time);
 					time = 0;
 				}
 				break;
