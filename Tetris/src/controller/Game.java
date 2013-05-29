@@ -1,13 +1,11 @@
 package controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
+import view.GUI;
 import view.TUI;
 
-public class Game implements ActionListener
+public class Game
 {
-	private TUI		tui;
+	private GUI		gui;
 	private int 	level;
 	private boolean running;
 	private long	timer;
@@ -18,14 +16,14 @@ public class Game implements ActionListener
 	
 	public Game()
 	{
-		tui = new TUI();
+		gui = new GUI();
 		level 	= 0;
 		timer 	= 0;
 		time 	= 0;
 		state 	= 0;
 		running = true;
-		guiFlag = false;
-		tuiFlag = true;
+		guiFlag = true;
+		tuiFlag = false;
 	}
 	
 	public boolean init()
@@ -44,7 +42,6 @@ public class Game implements ActionListener
 	
 	public void printMenu()
 	{
-		tui.printMenu();
 	}
 	
 	public void run()
@@ -55,18 +52,18 @@ public class Game implements ActionListener
 			switch(state)
 			{
 			case 0:
-				printMenu();
+				if(time > 1000)
+				{
+					gui.repaint();
+					time = 0;
+				}
 				break;
 			case 1:
 				update(time);
 				print();
 				break;
 			}
-			time = System.currentTimeMillis() - timer;
+			time += System.currentTimeMillis() - timer;
 		}
-	}
-
-	public void actionPerformed(ActionEvent e)
-	{
 	}
 }
