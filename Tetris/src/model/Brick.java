@@ -9,6 +9,11 @@ public class Brick
 	
 	public Brick(){
 		
+	reset();	
+		
+	}
+	
+	public void reset(){
 		scene = rand();
 		form = new boolean [4][4];
 		
@@ -64,11 +69,8 @@ public class Brick
 			break;
 		
 		}
-		
-		
-		
-		
 	}
+	
 	private int rand(){
 	
 			return (int) 	(Math.random() * 7);	
