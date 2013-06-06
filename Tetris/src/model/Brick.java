@@ -63,7 +63,7 @@ public class Brick
 		case 4:
 			form[0][1] = true;
 			form[1][1] = true;
-			form[1][1] = true;
+			form[2][1] = true;
 			form[2][2] = true;
 			break;
 		
