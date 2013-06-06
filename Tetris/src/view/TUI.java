@@ -1,14 +1,22 @@
 package view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.PrintStream;
 
-public class TUI implements ActionListener
+public class TUI
 {
+	private static TUI instance = null;
 	private PrintStream console;
 	
-	public TUI()
+	public static TUI getInstance()
+	{
+		if(instance == null)
+		{
+			return instance = new TUI();
+		}
+		return instance;
+	}
+	
+	private TUI()
 	{
 		console = System.out;
 	}
@@ -20,12 +28,7 @@ public class TUI implements ActionListener
 		console.printf("\tQ) Exit game\n");
 	}
 	
-	public void print()
+	public void printGame()
 	{
-	}
-
-	public void actionPerformed(ActionEvent e)
-	{
-		console.printf("Action performed.\n");
 	}
 }

@@ -4,26 +4,32 @@ import model.Map;
 import model.Brick;
 import view.GUI;
 import view.TUI;
+import controller.InputHandler;
 
 public class Game
 {
-	private GUI		gui;
-	private Map		map;
-	private Brick	activeBrick;
-	private int 	level;
-	private boolean running;
-	private long	timer;
-	private long	time;
-	private boolean guiFlag;
-	private boolean tuiFlag;
-	private byte	state;
+	private GUI				gui;
+	private TUI				tui;
+	private Map				map;
+	private Brick			activeBrick;
+	private double 			level;
+	private boolean 		running;
+	private long			timer;
+	private long			time;
+	private boolean			guiFlag;
+	private boolean			tuiFlag;
+	private byte			state;
+	private InputHandler 	inputHandle;
 	
 	public Game()
 	{
-		gui 		= new GUI();
+		gui 		= GUI.getInstance();
+		inputHandle	= InputHandler.getInstance();
+		gui.addKeyListener(inputHandle);
+		tui			= TUI.getInstance();
 		map			= Map.getInstance();
 		activeBrick	= Brick.getInstance();
-		level 		= 0;
+		level 		= 0.2;
 		timer 		= 0;
 		time 		= 0;
 		state 		= 0;
@@ -40,7 +46,7 @@ public class Game
 	
 	public void update(long time)
 	{
-		if(time >= 1000)
+		if(time >= 1000 * level)
 		{
 			++activeBrick.posY;
 			if(activeBrick.posY >= 15)
@@ -70,9 +76,10 @@ public class Game
 			{
 			case 0:
 				update(time);
-				if(time >= 1000)
+				if(time >= 1000 * level)
 				{
 					gui.repaint();
+					tui.printMenu();
 					time = 0;
 				}
 				break;
