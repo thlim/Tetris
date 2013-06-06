@@ -1,5 +1,4 @@
 package model;
-import java.math.*;
 
 public class Brick
 {
@@ -85,8 +84,10 @@ public class Brick
 		}
 	}
 	
-	public void turn (Brick b){
+	public void turn (){
 		boolean temp[][] = new boolean [4][4];
+		
+		Brick b = getInstance();
 		
 		temp[0][0] = b.form[0][3];
 		temp[1][0] = b.form[0][2];
