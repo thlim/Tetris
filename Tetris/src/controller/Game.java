@@ -85,7 +85,6 @@ public class Game
 				break;
 			case 1:
 				update(time);
-				print();
 				break;
 			}
 			time += System.currentTimeMillis() - timer;
