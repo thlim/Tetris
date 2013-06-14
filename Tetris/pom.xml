@@ -18,6 +18,11 @@
 				</configuration>
 			</plugin>
 
+			<plugin>
+				<groupId>com.github.goldin</groupId>
+				<artifactId>jenkins-maven-plugin</artifactId>
+				<version>0.2.5</version>
+			</plugin>
 		</plugins>
 	</build>
 
