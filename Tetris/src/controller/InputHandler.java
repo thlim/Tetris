@@ -29,7 +29,6 @@ public class InputHandler implements KeyListener
 		activeBrick = Brick.getInstance();
 	}
 
-	@Override
 	public void keyPressed(KeyEvent e)
 	{
 		switch(e.getKeyCode())
@@ -48,12 +47,10 @@ public class InputHandler implements KeyListener
 		System.out.println(e.getKeyCode());	
 	}
 
-	@Override
 	public void keyReleased(KeyEvent e)
 	{
 	}
 
-	@Override
 	public void keyTyped(KeyEvent arg0)
 	{
 	}

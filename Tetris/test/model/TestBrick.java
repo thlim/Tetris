@@ -1,7 +1,7 @@
 package model;
 
 import static org.junit.Assert.*;
-import junit.framework.Assert;
+
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,7 @@ public class TestBrick {
 
 	@Before
 	public void setUp() throws Exception {
-		brick = brick.getInstance();
+		brick = Brick.getInstance();
 	}
 
 	@Test
