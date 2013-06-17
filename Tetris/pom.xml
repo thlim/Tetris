@@ -4,10 +4,20 @@
 	<groupId>Tetris2</groupId>
 	<artifactId>Tetris2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<testSourceDirectory>test</testSourceDirectory>
-
+		<defaultGoal>install</defaultGoal>
+		<resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+   
 	
 	</build>
 
