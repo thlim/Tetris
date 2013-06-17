@@ -42,9 +42,15 @@ public class InputHandler implements KeyListener
 		case 39:
 			++activeBrick.posX;
 			break;
+		case 40:
+			++activeBrick.posY;
+			break;
+		case 38:
+			activeBrick.turn();
+			break;
 		}
 		GUI.getInstance().repaint();
-		System.out.println(e.getKeyCode());	
+		//System.out.println(e.getKeyCode());	
 	}
 
 	public void keyReleased(KeyEvent e)

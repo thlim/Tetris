@@ -41,22 +41,6 @@ public class GUI extends Frame
 		int x = 100;
 		int y = 40;
 		
-		/*for(int j = 0; j < 10; ++ j)
-		{
-			for(int i = 0; i < 18; ++i)
-			{
-				if(Math.random() < 0.5)
-				{
-					g.setColor(Color.red);
-				}
-				else
-				{
-					g.setColor(Color.green);
-				}
-				g.fillRect(j * 30 + x, i * 30 + y, 30, 30);
-			}
-		}*/
-		
 		// DRAWING MAP
 		for(int j = 0; j < 18; ++j)
 		{
@@ -119,5 +103,16 @@ public class GUI extends Frame
 		{
 			g.drawLine(0 + x, i * 30 + y, 300 + x, i * 30 + y);
 		}
+		
+		// DRAWING DEBUG RECT
+		g.setColor(Color.yellow);
+		g.drawRect(activeBrick.posX * 30 + x, activeBrick.posY * 30 + y, 120, 120);
+		// DEBUG MONITOR
+		g.setColor(Color.black);
+		g.drawString("DEBUG MONITOR:", 600, 50);
+		g.drawString("ActiveBrick (" + activeBrick.posX + " | " + activeBrick.posY + ")", 600, 70);
+		g.drawString("most left: " + activeBrick.mostLeftX + " | " + activeBrick.mostLeftY, 600, 90);
+		g.drawString("most right: " + activeBrick.mostRightX + " | " + activeBrick.mostRightY, 600, 110);
+		g.drawString("most bottom: " + activeBrick.mostBottomX + " | " + activeBrick.mostBottomY, 600, 130);
 	}
 }

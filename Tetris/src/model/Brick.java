@@ -8,11 +8,19 @@ public class Brick
 	public int posX;
 	public int posY;
 	public int style;
+	public int mostLeftX;
+	public int mostLeftY;
+	public int mostRightX;
+	public int mostRightY;
+	public int mostBottomX;
+	public int mostBottomY;
 	
-	private Brick(){
-		
-		reset();	
-		
+	private Brick()
+	{	
+		reset();
+		mostLeftX = 4;
+		mostRightX = -1;
+		mostBottomY = -1;
 	}
 	
 	public static Brick getInstance()
@@ -114,12 +122,8 @@ public class Brick
 		
 	}
 	
-	private int rand(){
-	
+	private int rand()
+	{
 			return (int) 	(Math.random() * 7);	
-		
-		
-		
 	}
-	
 }
