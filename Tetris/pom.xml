@@ -8,7 +8,7 @@
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<testSourceDirectory>test</testSourceDirectory>
-		<defaultGoal>install</defaultGoal>
+		
 		<resources>
       <resource>
         <directory>src</directory>
