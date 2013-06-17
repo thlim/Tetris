@@ -9,22 +9,43 @@ public class ModelImpl implements IModel {
 	}
 
 	
-	public void turnBrick(Brick b) {
+	public void turnBrick() {
 		
-		b.turn();
+		Brick.getInstance().turn();
 
 	}
 
 	
 	public Map getMap() {
 		// TODO Auto-generated method stub
-		return null;
+		return Map.getInstance();
 	}
 
 	
 	public void addBrick(Brick b) {
-		// TODO Auto-generated method stub
+		Map.getInstance().addBrick(b);
+	}
 
+
+	
+	public void resetBrick() {
+		Brick.getInstance().rand();
+		Brick.getInstance().reset();
+		
+	}
+
+
+	@Override
+	public boolean getForm(int x, int y) {
+		return Brick.getInstance().get(x, y);
+		
+	}
+
+
+	@Override
+	public int getScene() {
+	
+		return Brick.getInstance().getScene();
 	}
 
 }

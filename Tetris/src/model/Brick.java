@@ -16,7 +16,7 @@ public class Brick
 	public int mostBottomY;
 	
 	private Brick()
-	{	
+	{	rand();
 		reset();
 		mostLeftX = 4;
 		mostRightX = -1;
@@ -37,8 +37,12 @@ public class Brick
 		return form[x][y];
 	}
 	
+	public int getScene(){
+		return scene;
+	}
+	
 	public void reset(){
-		scene = rand();
+		//scene = rand();
 		form = new boolean [4][4];
 		posX = 4;
 		posY = 0;
@@ -127,8 +131,8 @@ public class Brick
 		
 	}
 	
-	private int rand()
+	public void rand()
 	{
-			return (int) 	(Math.random() * 7);	
+			scene = (int) 	(Math.random() * 7);	
 	}
 }

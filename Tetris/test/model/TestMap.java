@@ -13,22 +13,34 @@ public class TestMap {
 
 	@Test
 	public void testGetInstance() {
-		assertTrue(true);
+		assertNotNull(Map.getInstance());
 	}
 
 	@Test
 	public void testAddBrick() {
-		assertTrue(true);
+		Map.getInstance().addBrick(Brick.getInstance());
+		for(int y = 0; y < 4; ++y)
+		{
+			for(int x = 0; x < 4; ++x)
+			{
+				if(Brick.getInstance().get(x,y) == true)
+				{
+					assertTrue(Map.getInstance().get(4 + x, y));
+				}
+			}
+		}
 	}
 
 	@Test
 	public void testSet() {
-		assertTrue(true);
+		Map.getInstance().set(0, 0, true);
+		assertTrue(Map.getInstance().get(0, 0));
 	}
 
 	@Test
 	public void testGet() {
-		assertTrue(true);
+		Map.getInstance().set(0, 0, true);
+		assertTrue(Map.getInstance().get(0, 0));
 	}
 
 }
