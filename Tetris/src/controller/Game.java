@@ -21,6 +21,7 @@ public class Game
 	private boolean			tuiFlag;
 	private byte			state;
 	private InputHandler 	inputHandle;
+	private int[]			distances;
 	
 	public Game()
 	{
@@ -49,8 +50,11 @@ public class Game
 	public void update(long time)
 	{
 		checkBrickCollision(activeBrick);
+		getDistances(activeBrick);
 		if(time >= 1000 * level)
 		{
+			System.out.println(distances[0] + ", " + distances[1] + ", "
+					+ distances[2] + ", " + distances[3] + ", " + collisionAhead);
 			if(collisionAhead)
 			{
 				map.addBrick(activeBrick);
@@ -80,7 +84,7 @@ public class Game
 		{
 			for(int y = 0; y < 4; ++y)
 			{
-				if(b.form[x][y] == true)
+				if(b.get(x, y) == true)
 				{
 					if(x < left)
 					{
@@ -110,24 +114,45 @@ public class Game
 					{
 						b.posX = 5 + b.mostRightX;
 					}
-					
-					if(y == 3 || b.form[x][y+1] == false)
-					{
-						if(map.get(x + b.posX, y + b.posY) == true)
-						{
-							collisionAhead = true;
-							return true;
-						}
-						else
-						{
-							collisionAhead = false;
-							return false;
-						}
-					}
 				}
 			}
 		}
 		return true;
+	}
+	
+	void getDistances(Brick b)
+	{
+		distances = new int[4];
+		for(int i = 0; i < distances.length; ++i)
+		{
+			distances[i] = -1;
+		}
+		
+		for(int x = 0; x < 4; ++x)
+		{
+			for(int y = 3; y >= 0; --y)
+			{
+				if(b.get(x, y) == true && distances[x] == -1)
+				{
+					while(b.posY + y + distances[x] < 17
+							&& map.get(b.posX + x, b.posY + y + distances[x]) == false)
+					{
+						++distances[x];
+					}
+					break;
+				}
+			}
+		}
+		
+		if(distances[0] == 0 || distances[1] == 0
+				|| distances[2] == 0 || distances[3] == 0)
+		{
+			collisionAhead = true;
+		}
+		else
+		{
+			collisionAhead = false;
+		}
 	}
 	
 	public void run()

@@ -59,7 +59,7 @@ public class GUI extends Frame
 		{
 			for(int i = 0; i < 4; ++i)
 			{
-				if(activeBrick.form[i][j] == true)
+				if(activeBrick.get(i, j) == true)
 				{
 					switch(activeBrick.scene)
 					{

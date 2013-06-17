@@ -33,7 +33,7 @@ public class Map
 		{
 			for(int x = 0; x < 4; ++x)
 			{
-				if(b.form[x][y] == true && (b.posY + y) < 18 && (b.posX + x) < 10)
+				if(b.get(x, y) == true && (b.posY + y) < 18 && (b.posX + x) < 10)
 				{
 					map[b.posX + x][b.posY + y] = true;
 				}

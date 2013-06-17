@@ -3,7 +3,7 @@ package model;
 public class Brick
 {
 	private static Brick instance = null;
-	public boolean form [][];
+	private boolean form [][];
 	public int scene;
 	public int posX;
 	public int posY;
@@ -30,6 +30,11 @@ public class Brick
 			return instance = new Brick();
 		}
 		return instance;
+	}
+	
+	public boolean get(int x, int y)
+	{
+		return form[x][y];
 	}
 	
 	public void reset(){
