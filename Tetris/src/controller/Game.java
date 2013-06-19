@@ -60,7 +60,7 @@ public class Game
 				map.addBrick(activeBrick);
 				activeBrick.posX += 4;
 				activeBrick.posY = 0;
-				activeBrick.reset();
+				activeBrick.resetBrick();
 			}
 			else
 			{

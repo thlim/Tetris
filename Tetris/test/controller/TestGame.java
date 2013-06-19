@@ -2,23 +2,32 @@ package controller;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import java.awt.Robot;
+import model.Brick;
+
+import org.junit.*;
 
 public class TestGame {
 
+	Robot robo;
+	Game game;
+	Brick brick;
+	
 	@Before
-	public void setUp() throws Exception {
+	public void setUpBefore() throws Exception {
+		robo = new Robot();
+		game = new Game();
+		brick = Brick.getInstance();
 	}
 
 	@Test
 	public void testGame() {
-		assertTrue(true);
+		assertNotNull(game);
 	}
 
 	@Test
 	public void testInit() {
-		assertTrue(true);
+		assertTrue(game.init());
 	}
 
 	@Test
@@ -40,5 +49,10 @@ public class TestGame {
 	public void testRun() {
 		assertTrue(true);
 	}
+	
+
+	
+
+
 
 }

@@ -15,73 +15,10 @@ public class Brick
 	public int mostBottomX;
 	public int mostBottomY;
 	
-	public void setPosX(int x){
-		posX = x;
-	}
 	
-	public void setPosY(int y){
-		posY = y;
-	}
-	
-	public void setMostLeftX( int mlx){
-		mostLeftX = mlx;
-	}
-	
-	public void setMostLeftY(int mly){
-		mostLeftY = mly;
-	}
-	
-	public void setMostRightX(int mrx){
-		mostRightX = mrx;
-	}
-	
-	public void setMostRightY(int mry){
-		mostRightY = mry;
-	}
-	
-	public void setMostBottomtX(int mbx){
-		mostBottomX = mbx;
-	}
-	
-	public void setMostBottomtY(int mby){
-		mostBottomY = mby;
-	}
-	
-	public int getPosX(){
-		return posX;
-	}
-	
-	public int getPosY(){
-		return posY;
-	}
-	
-	public int getMostLeftX(){
-		return mostLeftX;
-	}
-	
-	public int getMostLeftY(){
-		return mostLeftY;
-	}
-	
-	public int getMostRightX(){
-		return mostRightX;
-	}
-	
-	public int getMostRightY(){
-		return mostRightY;
-	}
-	
-	public int getMostBottomtX(){
-		return mostBottomX;
-	}
-	
-	public int getMostBottomtY(){
-		return mostBottomY;
-	}
 	
 	private Brick()
-	{	rand();
-		reset();
+	{	resetBrick();
 		mostLeftX = 4;
 		mostRightX = -1;
 		mostBottomY = -1;
@@ -101,11 +38,9 @@ public class Brick
 		return form[x][y];
 	}
 	
-	public int getScene(){
-		return scene;
-	}
+
 	
-	public void reset(){
+	public void resetScene(){
 		//scene = rand();
 		form = new boolean [4][4];
 		posX = 4;
@@ -195,8 +130,9 @@ public class Brick
 		
 	}
 	
-	public void rand()
+	public void resetBrick()
 	{
-			scene = (int) 	(Math.random() * 7);	
+			scene = (int) 	(Math.random() * 7);
+			resetScene();
 	}
 }
