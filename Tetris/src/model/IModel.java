@@ -1,7 +1,8 @@
+package model;
 /**
  * 
  */
-package model;
+
 
 import com.google.inject.ImplementedBy;
 

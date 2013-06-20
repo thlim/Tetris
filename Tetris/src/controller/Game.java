@@ -1,19 +1,15 @@
 package controller;
 
+import model.IModel;
+import view.IView;
+
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-import model.IModel;
-import model.Map;
-import model.Brick;
-import view.GUI;
-import view.TUI;
-import controller.InputHandler;
-
 public class Game
 {
-	private GUI				gui;
-	private TUI				tui;
+	//private GUI				gui;
+	//private TUI				tui;
 	//private Map				map;
 	//private Brick			activeBrick;
 	private double 			level;
@@ -24,20 +20,17 @@ public class Game
 	private boolean			guiFlag;
 	private boolean			tuiFlag;
 	private byte			state;
-	private InputHandler 	inputHandle;
 	private int[]			distances;
 	private IModel model;
+	private IView view;
 	
 	public Game()
 	{
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
-		gui 		= GUI.getInstance();
-		inputHandle	= InputHandler.getInstance();
-		gui.addKeyListener(inputHandle);
-		tui			= TUI.getInstance();
-		//map			= Map.getInstance();
-		//activeBrick	= Brick.getInstance();
+		InputHandler.getInstance();
+	
+		view = injector.getInstance(IView.class);
 		level 		= 1.0;
 		timer 		= 0;
 		time 		= 0;
@@ -54,7 +47,7 @@ public class Game
 		return true;
 	}
 	
-	public void update(long time)
+	private void update(long time)
 	{
 		checkBrickCollision();
 		getDistances();
@@ -76,12 +69,12 @@ public class Game
 		}
 	}
 	
-	public void moveBrickDown()
+	private void moveBrickDown()
 	{
 		model.setPosY(model.getPosY() +1);
 	}
 	
-	boolean checkBrickCollision()
+	private boolean checkBrickCollision()
 	{
 		int left = 4;
 		int right = -1;
@@ -128,7 +121,7 @@ public class Game
 		return true;
 	}
 	
-	void getDistances()
+	private void getDistances()
 	{
 		distances = new int[4];
 		for(int i = 0; i < distances.length; ++i)
@@ -174,7 +167,8 @@ public class Game
 				update(time);
 				if(time >= 1000 * level)
 				{
-					gui.repaint();
+					view.update();
+					//gui.repaint();
 					//tui.printMenu();
 					time = 0;
 				}

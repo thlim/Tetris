@@ -8,8 +8,6 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import model.IModel;
-import model.Map;
-import model.Brick;
 
 public final class GUI extends Frame
 {
