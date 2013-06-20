@@ -15,7 +15,7 @@ public interface IModel {
 
 	
 	int getScene();
-	void resetBrick();
+	void resetBrick(int style);
 	void turnBrick();
 	boolean getBrickvalue(int x, int y);
 	void addBrick();

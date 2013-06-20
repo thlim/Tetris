@@ -29,13 +29,13 @@ public class ModelImpl implements IModel {
 	}
 
 	@Override
-	public void resetBrick() {
+	public void resetBrick(int style) {
 		// TODO Auto-generated method stub
 		mostLeftX = 4;
 		mostRightX = -1;
 		mostBottomY = -1;
 		
-		brick.resetBrick();
+		brick.resetBrick(style);
 
 	}
 

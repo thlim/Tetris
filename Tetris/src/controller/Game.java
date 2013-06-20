@@ -60,7 +60,7 @@ public class Game
 				model.addBrick();
 				model.setPosX(model.getPosX() + 4);
 				model.setPosY(0);
-				model.resetBrick();
+				model.resetBrick((int)(Math.random() * 7));
 			}
 			else
 			{

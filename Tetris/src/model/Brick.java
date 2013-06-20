@@ -8,7 +8,8 @@ public final class Brick {
 	private int posY;
 
 	private Brick() {
-		resetBrick();
+		scene = (int) (Math.random() * 7);
+		resetBrick(scene);
 		
 	}
 
@@ -24,7 +25,7 @@ public final class Brick {
 		return form[x][y];
 	}
 
-	private void resetScene() {
+	private void resetScene( int scene) {
 
 		form = new boolean[4][4];
 		
@@ -112,11 +113,12 @@ public final class Brick {
 
 	}
 
-	public void resetBrick() {
+	public void resetBrick(int style) {
 		posX = 4;
 		posY = 0;
-		scene = (int) (Math.random() * 7);
-		resetScene();
+		//scene = (int) (Math.random() * 7);
+		scene = style;
+		resetScene(scene);
 	}
 
 	/**
