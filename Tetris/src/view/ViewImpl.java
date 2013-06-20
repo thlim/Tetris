@@ -23,7 +23,7 @@ public class ViewImpl implements IView {
 	@Inject
 	public ViewImpl() {
 		gui = GUI.getInstance();
-		gui.addKeyListener(InputHandler.getInstance());
+		//gui.addKeyListener(InputHandler.getInstance());
 		tui = TUI.getInstance();
 	}
 
@@ -34,6 +34,10 @@ public class ViewImpl implements IView {
 	public void update() {
 		// TODO Auto-generated method stub
 		gui.repaint();
+	}
+	
+	public GUI getGui(){
+		return gui;
 	}
 
 }

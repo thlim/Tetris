@@ -31,6 +31,7 @@ public class Game
 		InputHandler.getInstance();
 	
 		view = injector.getInstance(IView.class);
+		view.getGui().addKeyListener(InputHandler.getInstance());
 		level 		= 1.0;
 		timer 		= 0;
 		time 		= 0;
