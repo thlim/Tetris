@@ -23,8 +23,8 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.camel</groupId>
-				<artifactId>guice-maven-plugin</artifactId>
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
 				<version>3.0</version>
 			</plugin>
 		</plugins>

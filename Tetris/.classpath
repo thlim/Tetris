@@ -13,6 +13,9 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Bombilla/git/Tetris2/Tetris/lib/aopalliance.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Bombilla/git/Tetris2/Tetris/lib/guice-3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Bombilla/git/Tetris2/Tetris/lib/javax.inject.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -23,8 +26,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Bombilla/git/Tetris2/Tetris/lib/aopalliance.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Bombilla/git/Tetris2/Tetris/lib/guice-3.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Bombilla/git/Tetris2/Tetris/lib/javax.inject.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
