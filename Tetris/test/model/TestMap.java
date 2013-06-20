@@ -30,7 +30,7 @@ public class TestMap {
 			{
 				if(brick.get(x,y) == true)
 				{
-					assertTrue(true);
+					assertTrue(map.get(brick.getPosX() + x, y));
 				}
 			}
 		}
