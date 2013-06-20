@@ -8,17 +8,12 @@ import com.google.inject.Injector;
 
 public class Game
 {
-	//private GUI				gui;
-	//private TUI				tui;
-	//private Map				map;
-	//private Brick			activeBrick;
+
 	private double 			level;
 	private boolean			collisionAhead;
 	private boolean 		running;
 	private long			timer;
 	private long			time;
-	private boolean			guiFlag;
-	private boolean			tuiFlag;
 	private byte			state;
 	private int[]			distances;
 	private IModel model;
@@ -37,8 +32,6 @@ public class Game
 		time 		= 0;
 		state 		= 0;
 		running	 	= true;
-		guiFlag		= true;
-		tuiFlag		= false;
 		collisionAhead = false;
 	}
 	
@@ -169,8 +162,7 @@ public class Game
 				if(time >= 1000 * level)
 				{
 					view.update();
-					//gui.repaint();
-					//tui.printMenu();
+					
 					time = 0;
 				}
 				break;

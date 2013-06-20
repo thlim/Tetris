@@ -2,7 +2,7 @@ package view;
 
 import java.io.PrintStream;
 
-public class TUI
+public final class TUI
 {
 	private static TUI instance = null;
 	private PrintStream console;
@@ -11,7 +11,8 @@ public class TUI
 	{
 		if(instance == null)
 		{
-			return instance = new TUI();
+			instance = new TUI();
+			return instance;
 		}
 		return instance;
 	}

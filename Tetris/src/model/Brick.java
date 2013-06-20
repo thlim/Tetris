@@ -10,7 +10,7 @@ public final class Brick {
 	private Brick() {
 		scene = (int) (Math.random() * 7);
 		resetBrick(scene);
-		
+
 	}
 
 	public static Brick getInstance() {
@@ -25,10 +25,9 @@ public final class Brick {
 		return form[x][y];
 	}
 
-	private void resetScene( int scene) {
+	private void resetScene(int scene) {
 
 		form = new boolean[4][4];
-		
 
 		switch (scene) {
 
@@ -87,8 +86,6 @@ public final class Brick {
 	public void turn() {
 		boolean temp[][] = new boolean[4][4];
 
-		// Brick b = getInstance();
-
 		temp[0][0] = form[0][3];
 		temp[1][0] = form[0][2];
 		temp[2][0] = form[0][1];
@@ -116,7 +113,7 @@ public final class Brick {
 	public void resetBrick(int style) {
 		posX = 4;
 		posY = 0;
-		//scene = (int) (Math.random() * 7);
+
 		scene = style;
 		resetScene(scene);
 	}
@@ -128,8 +125,6 @@ public final class Brick {
 		return scene;
 	}
 
-
-
 	/**
 	 * @return the posX
 	 */
@@ -138,7 +133,8 @@ public final class Brick {
 	}
 
 	/**
-	 * @param posX the posX to set
+	 * @param posX
+	 *            the posX to set
 	 */
 	public void setPosX(int posX) {
 		this.posX = posX;
@@ -152,7 +148,8 @@ public final class Brick {
 	}
 
 	/**
-	 * @param posY the posY to set
+	 * @param posY
+	 *            the posY to set
 	 */
 	public void setPosY(int posY) {
 		this.posY = posY;

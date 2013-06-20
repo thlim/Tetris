@@ -6,8 +6,6 @@ package view;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import controller.InputHandler;
-
 /**
  * @author Bombilla
  *
@@ -15,15 +13,16 @@ import controller.InputHandler;
 @Singleton
 public class ViewImpl implements IView {
 
-	GUI gui;
-	TUI tui;
+	private GUI gui;
+	@SuppressWarnings("unused")
+	private TUI tui;
 	/**
 	 * 
 	 */
 	@Inject
 	public ViewImpl() {
 		gui = GUI.getInstance();
-		//gui.addKeyListener(InputHandler.getInstance());
+		
 		tui = TUI.getInstance();
 	}
 

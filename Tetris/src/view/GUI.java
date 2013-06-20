@@ -9,29 +9,24 @@ import com.google.inject.Injector;
 
 import model.IModel;
 
-public final class GUI extends Frame
-{
+public final class GUI extends Frame {
 	private static final long serialVersionUID = 1L;
 	private static GUI instance = null;
-	//Map 	map;
-	//private Brick 	activeBrick;
+
 	IModel model;
-	
-	public static GUI getInstance()
-	{
-		if(instance == null)
-		{
+
+	public static GUI getInstance() {
+		if (instance == null) {
 			instance = new GUI();
 			return instance;
 		}
 		return instance;
 	}
-	
-	private GUI()
-	{Injector injector = Guice.createInjector();
-	model = injector.getInstance(IModel.class);
-		//map = Map.getInstance();
-		//activeBrick = Brick.getInstance();
+
+	private GUI() {
+		Injector injector = Guice.createInjector();
+		model = injector.getInstance(IModel.class);
+
 		setSize(800, 600);
 		setLocation(0, 0);
 		setResizable(false);
@@ -39,35 +34,27 @@ public final class GUI extends Frame
 		setBackground(Color.white);
 		setVisible(true);
 	}
-	
+
 	@Override
-	public void paint(Graphics g)
-	{
+	public void paint(Graphics g) {
 		int x = 100;
 		int y = 40;
-		
+
 		// DRAWING MAP
-		for(int j = 0; j < 18; ++j)
-		{
-			for(int i = 0; i < 10; ++i)
-			{
-				if(model.getMapValue(i, j) == true)
-				{
+		for (int j = 0; j < 18; ++j) {
+			for (int i = 0; i < 10; ++i) {
+				if (model.getMapValue(i, j) == true) {
 					g.setColor(Color.red);
 					g.fillRect(i * 30 + x, j * 30 + y, 30, 30);
 				}
 			}
 		}
-		
+
 		// DRAWING ACTIVE BRICK
-		for(int j = 0; j < 4; ++j)
-		{
-			for(int i = 0; i < 4; ++i)
-			{
-				if(model.getBrickvalue(i, j) == true)
-				{
-					switch(model.getScene())
-					{
+		for (int j = 0; j < 4; ++j) {
+			for (int i = 0; i < 4; ++i) {
+				if (model.getBrickvalue(i, j) == true) {
+					switch (model.getScene()) {
 					case 0:
 						g.setColor(Color.red);
 						break;
@@ -90,34 +77,41 @@ public final class GUI extends Frame
 						g.setColor(Color.pink);
 						break;
 					}
-					g.fillRect((model.getPosX() + i) * 30 + x, (model.getPosY() + j) * 30 + y, 30, 30);
+					g.fillRect((model.getPosX() + i) * 30 + x,
+							(model.getPosY() + j) * 30 + y, 30, 30);
 				}
 			}
 		}
-		
+
 		// DRAWING BORDERS AT THE END
 		g.setColor(Color.black);
 		g.drawLine(500, 0, 500, 600);
-		
-		for(int j = 0; j < 11; ++j)
-		{
+
+		for (int j = 0; j < 11; ++j) {
 			g.drawLine(j * 30 + x, 0 + y, j * 30 + x, 540 + y);
 		}
-		
-		for(int i = 0; i < 19; ++i)
-		{
+
+		for (int i = 0; i < 19; ++i) {
 			g.drawLine(0 + x, i * 30 + y, 300 + x, i * 30 + y);
 		}
-		
+
 		// DRAWING DEBUG RECT
 		g.setColor(Color.yellow);
 		g.drawRect(model.getPosX() * 30 + x, model.getPosY() * 30 + y, 120, 120);
 		// DEBUG MONITOR
 		g.setColor(Color.black);
 		g.drawString("DEBUG MONITOR:", 600, 50);
-		g.drawString("ActiveBrick (" + model.getPosX() + " | " + model.getPosY() + ")", 600, 70);
-		g.drawString("most left: " + model.getMostLeftX() + " | " + model.getMostLeftY(), 600, 90);
-		g.drawString("most right: " + model.getMostRightX() + " | " + model.getMostRightY(), 600, 110);
-		g.drawString("most bottom: " + model.getMostBottomX() + " | " + model.getMostBottomY(), 600, 130);
+		g.drawString(
+				"ActiveBrick (" + model.getPosX() + " | " + model.getPosY()
+						+ ")", 600, 70);
+		g.drawString(
+				"most left: " + model.getMostLeftX() + " | "
+						+ model.getMostLeftY(), 600, 90);
+		g.drawString(
+				"most right: " + model.getMostRightX() + " | "
+						+ model.getMostRightY(), 600, 110);
+		g.drawString(
+				"most bottom: " + model.getMostBottomX() + " | "
+						+ model.getMostBottomY(), 600, 130);
 	}
 }

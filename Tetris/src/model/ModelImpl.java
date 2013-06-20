@@ -6,8 +6,8 @@ import com.google.inject.Singleton;
 @Singleton
 public class ModelImpl implements IModel {
 
-	Brick brick;
-	Map map;
+	private Brick brick;
+	private Map map;
 	
 	
 
@@ -47,9 +47,9 @@ public class ModelImpl implements IModel {
 
 	@Override
 	public boolean getBrickvalue(int x, int y) {
-		boolean result = brick.get(x, y);
 		
-		return result;
+		
+		return brick.get(x, y);
 		// TODO Auto-generated method stub
 		
 	}
@@ -64,8 +64,8 @@ public class ModelImpl implements IModel {
 	public boolean getMapValue(int x, int y) {
 		// TODO Auto-generated method stub
 		
-		boolean result = map.get(x, y);
-		return result;
+		
+		return map.get(x, y);
 	}
 
 	@Override
