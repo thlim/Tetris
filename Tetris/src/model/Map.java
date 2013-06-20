@@ -1,6 +1,6 @@
 package model;
 
-public class Map
+public final class Map
 {
 	private static Map instance = null;
 
@@ -8,7 +8,8 @@ public class Map
 	{
 		if(instance == null)
 		{
-			return instance = new Map();
+			instance = new Map();
+			return instance;
 		}
 		return instance;
 	}
@@ -33,9 +34,9 @@ public class Map
 		{
 			for(int x = 0; x < 4; ++x)
 			{
-				if(b.get(x, y) == true && (b.posY + y) < 18 && (b.posX + x) < 10)
+				if(b.get(x, y) == true && (b.getPosY() + y) < 18 && (b.getPosX() + x) < 10)
 				{
-					map[b.posX + x][b.posY + y] = true;
+					map[b.getPosX() + x][b.getPosY() + y] = true;
 				}
 			}
 		}

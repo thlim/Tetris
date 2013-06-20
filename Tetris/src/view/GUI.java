@@ -4,29 +4,36 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Graphics;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
+import model.IModel;
 import model.Map;
 import model.Brick;
 
-public class GUI extends Frame
+public final class GUI extends Frame
 {
 	private static final long serialVersionUID = 1L;
 	private static GUI instance = null;
-	Map 	map;
-	Brick 	activeBrick;
+	//Map 	map;
+	//private Brick 	activeBrick;
+	IModel model;
 	
 	public static GUI getInstance()
 	{
 		if(instance == null)
 		{
-			return instance = new GUI();
+			instance = new GUI();
+			return instance;
 		}
 		return instance;
 	}
 	
 	private GUI()
-	{
-		map = Map.getInstance();
-		activeBrick = Brick.getInstance();
+	{Injector injector = Guice.createInjector();
+	model = injector.getInstance(IModel.class);
+		//map = Map.getInstance();
+		//activeBrick = Brick.getInstance();
 		setSize(800, 600);
 		setLocation(0, 0);
 		setResizable(false);
@@ -46,7 +53,7 @@ public class GUI extends Frame
 		{
 			for(int i = 0; i < 10; ++i)
 			{
-				if(map.get(i,  j) == true)
+				if(model.getMapValue(i, j) == true)
 				{
 					g.setColor(Color.red);
 					g.fillRect(i * 30 + x, j * 30 + y, 30, 30);
@@ -59,9 +66,9 @@ public class GUI extends Frame
 		{
 			for(int i = 0; i < 4; ++i)
 			{
-				if(activeBrick.get(i, j) == true)
+				if(model.getBrickvalue(i, j) == true)
 				{
-					switch(activeBrick.scene)
+					switch(model.getScene())
 					{
 					case 0:
 						g.setColor(Color.red);
@@ -85,7 +92,7 @@ public class GUI extends Frame
 						g.setColor(Color.pink);
 						break;
 					}
-					g.fillRect((activeBrick.posX + i) * 30 + x, (activeBrick.posY + j) * 30 + y, 30, 30);
+					g.fillRect((model.getPosX() + i) * 30 + x, (model.getPosY() + j) * 30 + y, 30, 30);
 				}
 			}
 		}
@@ -106,13 +113,13 @@ public class GUI extends Frame
 		
 		// DRAWING DEBUG RECT
 		g.setColor(Color.yellow);
-		g.drawRect(activeBrick.posX * 30 + x, activeBrick.posY * 30 + y, 120, 120);
+		g.drawRect(model.getPosX() * 30 + x, model.getPosY() * 30 + y, 120, 120);
 		// DEBUG MONITOR
 		g.setColor(Color.black);
 		g.drawString("DEBUG MONITOR:", 600, 50);
-		g.drawString("ActiveBrick (" + activeBrick.posX + " | " + activeBrick.posY + ")", 600, 70);
-		g.drawString("most left: " + activeBrick.mostLeftX + " | " + activeBrick.mostLeftY, 600, 90);
-		g.drawString("most right: " + activeBrick.mostRightX + " | " + activeBrick.mostRightY, 600, 110);
-		g.drawString("most bottom: " + activeBrick.mostBottomX + " | " + activeBrick.mostBottomY, 600, 130);
+		g.drawString("ActiveBrick (" + model.getPosX() + " | " + model.getPosY() + ")", 600, 70);
+		g.drawString("most left: " + model.getMostLeftX() + " | " + model.getMostLeftY(), 600, 90);
+		g.drawString("most right: " + model.getMostRightX() + " | " + model.getMostRightY(), 600, 110);
+		g.drawString("most bottom: " + model.getMostBottomX() + " | " + model.getMostBottomY(), 600, 130);
 	}
 }

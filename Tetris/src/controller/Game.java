@@ -1,5 +1,9 @@
 package controller;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
+import model.IModel;
 import model.Map;
 import model.Brick;
 import view.GUI;
@@ -10,8 +14,8 @@ public class Game
 {
 	private GUI				gui;
 	private TUI				tui;
-	private Map				map;
-	private Brick			activeBrick;
+	//private Map				map;
+	//private Brick			activeBrick;
 	private double 			level;
 	private boolean			collisionAhead;
 	private boolean 		running;
@@ -22,15 +26,18 @@ public class Game
 	private byte			state;
 	private InputHandler 	inputHandle;
 	private int[]			distances;
+	private IModel model;
 	
 	public Game()
 	{
+		Injector injector = Guice.createInjector();
+		model = injector.getInstance(IModel.class);
 		gui 		= GUI.getInstance();
 		inputHandle	= InputHandler.getInstance();
 		gui.addKeyListener(inputHandle);
 		tui			= TUI.getInstance();
-		map			= Map.getInstance();
-		activeBrick	= Brick.getInstance();
+		//map			= Map.getInstance();
+		//activeBrick	= Brick.getInstance();
 		level 		= 1.0;
 		timer 		= 0;
 		time 		= 0;
@@ -49,18 +56,18 @@ public class Game
 	
 	public void update(long time)
 	{
-		checkBrickCollision(activeBrick);
-		getDistances(activeBrick);
+		checkBrickCollision();
+		getDistances();
 		if(time >= 1000 * level)
 		{
 			System.out.println(distances[0] + ", " + distances[1] + ", "
 					+ distances[2] + ", " + distances[3] + ", " + collisionAhead);
 			if(collisionAhead)
 			{
-				map.addBrick(activeBrick);
-				activeBrick.posX += 4;
-				activeBrick.posY = 0;
-				activeBrick.resetBrick();
+				model.addBrick();
+				model.setPosX(model.getPosX() + 4);
+				model.setPosY(0);
+				model.resetBrick();
 			}
 			else
 			{
@@ -71,10 +78,10 @@ public class Game
 	
 	public void moveBrickDown()
 	{
-		++activeBrick.posY;
+		model.setPosY(model.getPosY() +1);
 	}
 	
-	boolean checkBrickCollision(Brick b)
+	boolean checkBrickCollision()
 	{
 		int left = 4;
 		int right = -1;
@@ -84,35 +91,36 @@ public class Game
 		{
 			for(int y = 0; y < 4; ++y)
 			{
-				if(b.get(x, y) == true)
+				if(model.getBrickvalue(x, y) == true)
 				{
 					if(x < left)
 					{
-						b.mostLeftX = x;
-						b.mostLeftY = y;
+						model.setMostLeftX(x);
+						model.setMostLeftY(y);
 						left = x;
 					}
 					if(x > right)
 					{
-						b.mostRightX = x;
-						b.mostRightY = y;
+						model.setMostRightX(x);
+						model.setMostRightY(y);
 						right = x;
 					}
 					if(y > bottom)
 					{
-						b.mostBottomX = x;
-						b.mostBottomY = y;
+						model.setMostBottomX(x);
+						model.setMostBottomY(y);
 						bottom = y;
 					}
 					
-					if(left + b.posX < 0)
+					if(left + model.getPosX() < 0)
 					{
-						b.posX = 0 - b.mostLeftX;
+						model.setPosX(0 - model.getMostLeftX());
 					}
 					
-					if(right + b.posX > 9)
+					if(right + model.getPosX() > 9)
 					{
-						b.posX = 5 + b.mostRightX;
+						model.setPosX(5 + model.getMostRightX());
+						//b.posX = 5 + b.mostRightX;
 					}
 				}
 			}
@@ -120,7 +128,7 @@ public class Game
 		return true;
 	}
 	
-	void getDistances(Brick b)
+	void getDistances()
 	{
 		distances = new int[4];
 		for(int i = 0; i < distances.length; ++i)
@@ -132,10 +140,10 @@ public class Game
 		{
 			for(int y = 3; y >= 0; --y)
 			{
-				if(b.get(x, y) == true && distances[x] == -1)
+				if(model.getBrickvalue(x, y) == true && distances[x] == -1)
 				{
-					while(b.posY + y + distances[x] < 17
-							&& map.get(b.posX + x, b.posY + y + distances[x]) == false)
+					while(model.getPosY()+ y + distances[x] < 17
+							&& model.getMapValue(model.getPosX() + x, model.getPosY() + y + distances[x]) == false)
 					{
 						++distances[x];
 					}
