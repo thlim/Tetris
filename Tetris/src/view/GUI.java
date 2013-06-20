@@ -13,7 +13,7 @@ public final class GUI extends Frame {
 	private static final long serialVersionUID = 1L;
 	private static GUI instance = null;
 
-	IModel model;
+	private IModel model;
 
 	public static GUI getInstance() {
 		if (instance == null) {
@@ -43,7 +43,8 @@ public final class GUI extends Frame {
 		// DRAWING MAP
 		for (int j = 0; j < 18; ++j) {
 			for (int i = 0; i < 10; ++i) {
-				if (model.getMapValue(i, j) == true) {
+				boolean mapvalue = model.getMapValue(i, j);
+				if ( mapvalue == true) {
 					g.setColor(Color.red);
 					g.fillRect(i * 30 + x, j * 30 + y, 30, 30);
 				}
@@ -53,7 +54,8 @@ public final class GUI extends Frame {
 		// DRAWING ACTIVE BRICK
 		for (int j = 0; j < 4; ++j) {
 			for (int i = 0; i < 4; ++i) {
-				if (model.getBrickvalue(i, j) == true) {
+				boolean brickvalue = model.getBrickvalue(i, j);
+				if ( brickvalue == true) {
 					switch (model.getScene()) {
 					case 0:
 						g.setColor(Color.red);
