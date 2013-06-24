@@ -8,8 +8,8 @@ public final class Brick {
 	private int posY;
 
 	private Brick() {
-		scene = (int) (Math.random() * 7);
-		resetBrick(scene);
+		
+		resetBrick((int) (Math.random() * 7));
 
 	}
 
