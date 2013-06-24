@@ -12,9 +12,9 @@ public final class Map {
 	}
 
 	private static boolean map[][];
-
 	private Map() {
 		map = new boolean[10][18];
+		
 		
 	}
 
@@ -27,6 +27,7 @@ public final class Map {
 				}
 			}
 		}
+		checkLineFull();
 	}
 
 	public void set(int x, int y, boolean value) {
@@ -42,6 +43,50 @@ public final class Map {
 	 */
 	public boolean[][] getMap() {
 		return map;
+	}
+	
+	private void checkLineFull(){
+		
+		for (int j = 17; j >= 0; --j) {
+			int i = 0;
+				
+			while(i < 10){
+				boolean mapvalue = map[i][j];
+				if ( !mapvalue ) {
+					break;
+				}
+				else if ( i == 9){
+					deleteLine(j);
+					++j;
+					break;
+					
+				}
+				else{
+					++i;
+				}
+			}
+				
+			
+		}
+		
+	}
+	
+	private void deleteLine(int i){
+		if (i != 0){
+			for (int y = i; y >= 0; --y){
+				if (y == 0){
+					break;
+				}
+				else {
+					for (int x = 0; x < 10; ++x){
+						map[x][y] = map[x][y -1];	
+					}
+					
+				}
+			}
+		}
+		
+		
 	}
 	
 	
