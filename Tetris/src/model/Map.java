@@ -21,7 +21,7 @@ public final class Map {
 	public void addBrick(Brick b) {
 		for (int y = 0; y < 4; ++y) {
 			for (int x = 0; x < 4; ++x) {
-				if (b.get(x, y) == true && (b.getPosY() + y) < 18
+				if (b.get(x, y) && (b.getPosY() + y) < 18
 						&& (b.getPosX() + x) < 10) {
 					map[b.getPosX() + x][b.getPosY() + y] = true;
 				}

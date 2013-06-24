@@ -55,7 +55,7 @@ public final class InputHandler implements KeyListener
 			model.turnBrick();
 			break;
 		}
-		//GUI.getInstance().repaint();
+		
 		view.update();
 	}
 

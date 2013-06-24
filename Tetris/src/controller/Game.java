@@ -79,7 +79,7 @@ public class Game
 		{
 			for(int y = 0; y < 4; ++y)
 			{
-				if(model.getBrickvalue(x, y) == true)
+				if(model.getBrickvalue(x, y))
 				{
 					if(x < left)
 					{
@@ -128,10 +128,10 @@ public class Game
 		{
 			for(int y = 3; y >= 0; --y)
 			{
-				if(model.getBrickvalue(x, y) == true && distances[x] == -1)
+				if(model.getBrickvalue(x, y) && distances[x] == -1)
 				{
 					while(model.getPosY()+ y + distances[x] < 17
-							&& model.getMapValue(model.getPosX() + x, model.getPosY() + y + distances[x]) == false)
+							&& !model.getMapValue(model.getPosX() + x, model.getPosY() + y + distances[x]) )
 					{
 						++distances[x];
 					}

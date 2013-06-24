@@ -46,18 +46,22 @@ public final class TUI
 			for (int i = 0; i < 10; ++i) {
 				boolean mapvalue = model.getMapValue(i, j);
 				boolean tuiMapValue = tuiMap[i][j];
-				if ( mapvalue == true || tuiMapValue == true ) {
+				if ( mapvalue || tuiMapValue ) {
 					if(i == 9){
 						console.printf("|X|\n");
 					}
-					else console.printf("|X");
+					else {
+						console.printf("|X");
+					}
 				}
 				else {
 					
 					if(i == 9){
 						console.printf("|_|\n");
 					}
-					else console.printf("|_");
+					else {
+						console.printf("|_");
+					}
 				}
 			}
 		}
@@ -67,7 +71,7 @@ public final class TUI
 	private void brickPos(){
 		for (int y = 0; y < 4; ++y) {
 			for (int x = 0; x < 4; ++x) {
-				if (model.getBrickvalue(x, y) == true && (model.getPosY() + y) < 18
+				if (model.getBrickvalue(x, y) && (model.getPosY() + y) < 18
 						&& (model.getPosX() + x) < 10) {
 					tuiMap[model.getPosX() + x][model.getPosY() + y] = true;
 				}
