@@ -13,7 +13,7 @@ public final class Brick {
 
 	}
 
-	public static Brick getInstance() {
+	protected static Brick getInstance() {
 		if (instance == null) {
 			instance = new Brick();
 			return instance;
@@ -21,11 +21,11 @@ public final class Brick {
 		return instance;
 	}
 
-	public boolean get(int x, int y) {
+	protected boolean get(int x, int y) {
 		return form[x][y];
 	}
 
-	private void resetScene(int scene) {
+	protected void resetScene(int scene) {
 
 		form = new boolean[4][4];
 
@@ -83,7 +83,7 @@ public final class Brick {
 		}
 	}
 
-	public void turn() {
+	protected void turn() {
 		boolean temp[][] = new boolean[4][4];
 
 		temp[0][0] = form[0][3];
@@ -110,7 +110,7 @@ public final class Brick {
 
 	}
 
-	public void resetBrick(int style) {
+	protected void resetBrick(int style) {
 		posX = 4;
 		posY = 0;
 
@@ -121,14 +121,14 @@ public final class Brick {
 	/**
 	 * @return the scene
 	 */
-	public int getScene() {
+	protected int getScene() {
 		return scene;
 	}
 
 	/**
 	 * @return the posX
 	 */
-	public int getPosX() {
+	protected int getPosX() {
 		return posX;
 	}
 
@@ -136,14 +136,14 @@ public final class Brick {
 	 * @param posX
 	 *            the posX to set
 	 */
-	public void setPosX(int posX) {
+	protected void setPosX(int posX) {
 		this.posX = posX;
 	}
 
 	/**
 	 * @return the posY
 	 */
-	public int getPosY() {
+	protected int getPosY() {
 		return posY;
 	}
 
@@ -151,7 +151,7 @@ public final class Brick {
 	 * @param posY
 	 *            the posY to set
 	 */
-	public void setPosY(int posY) {
+	protected void setPosY(int posY) {
 		this.posY = posY;
 	}
 }

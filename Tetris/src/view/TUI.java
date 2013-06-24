@@ -14,7 +14,7 @@ public final class TUI
 	private IModel model;
 	private boolean tuiMap[][];
 	
-	public static TUI getInstance()
+	protected static TUI getInstance()
 	{
 		if(instance == null)
 		{
@@ -32,14 +32,14 @@ public final class TUI
 		tuiMap = new boolean[10][18];
 	}
 	
-	public void printMenu()
+	protected void printMenu()
 	{
 		console.printf("Tetris\n");
 		console.printf("\t1) Start game\n");
 		console.printf("\tQ) Exit game\n");
 	}
 	
-	public void printGame()
+	protected void printGame()
 	{
 		brickPos();
 		for (int j = 0; j < 18; ++j) {
@@ -65,6 +65,7 @@ public final class TUI
 				}
 			}
 		}
+		console.printf("\n");
 		resetTuiMap();
 	}
 	

@@ -3,7 +3,7 @@ package model;
 public final class Map {
 	private static Map instance = null;
 
-	public static Map getInstance() {
+	protected static Map getInstance() {
 		if (instance == null) {
 			instance = new Map();
 			return instance;
@@ -18,7 +18,7 @@ public final class Map {
 		
 	}
 
-	public void addBrick(Brick b) {
+	protected void addBrick(Brick b) {
 		for (int y = 0; y < 4; ++y) {
 			for (int x = 0; x < 4; ++x) {
 				if (b.get(x, y) && (b.getPosY() + y) < 18
@@ -30,18 +30,18 @@ public final class Map {
 		checkLineFull();
 	}
 
-	public void set(int x, int y, boolean value) {
+	protected void set(int x, int y, boolean value) {
 		map[x][y] = value;
 	}
 
-	public boolean get(int x, int y) {
+	protected boolean get(int x, int y) {
 		return map[x][y];
 	}
 
 	/**
 	 * @return the map
 	 */
-	public boolean[][] getMap() {
+	protected boolean[][] getMap() {
 		return map;
 	}
 	

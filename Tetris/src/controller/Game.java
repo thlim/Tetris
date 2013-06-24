@@ -18,13 +18,14 @@ public class Game
 	private int[]			distances;
 	private IModel model;
 	private IView view;
+	private Collision coll;
 	
 	public Game()
 	{
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
 		InputHandler.getInstance();
-	
+		coll = Collision.getInstance();
 		view = injector.getInstance(IView.class);
 		view.getGui().addKeyListener(InputHandler.getInstance());
 		level 		= 1.0;
@@ -43,13 +44,14 @@ public class Game
 	
 	private void update(long time)
 	{
-		checkBrickCollision();
-		getDistances();
+		
+		coll.checkBrickCollision();
+		distances = coll.getDistances();
 		if(time >= 1000 * level)
 		{
 			System.out.println(distances[0] + ", " + distances[1] + ", "
-					+ distances[2] + ", " + distances[3] + ", " + collisionAhead);
-			if(collisionAhead)
+					+ distances[2] + ", " + distances[3] + ", " + coll.isCollisionAhead());
+			if(coll.isCollisionAhead())
 			{
 				model.addBrick();
 				model.setPosX(model.getPosX() + 4);
@@ -69,87 +71,9 @@ public class Game
 		model.setPosY(model.getPosY() +1);
 	}
 	
-	private boolean checkBrickCollision()
-	{
-		int left = 4;
-		int right = -1;
-		int bottom = -1;
-		
-		for(int x = 0; x < 4 ; ++x)
-		{
-			for(int y = 0; y < 4; ++y)
-			{
-				if(model.getBrickvalue(x, y))
-				{
-					if(x < left)
-					{
-						model.setMostLeftX(x);
-						model.setMostLeftY(y);
-						left = x;
-					}
-					if(x > right)
-					{
-						model.setMostRightX(x);
-						model.setMostRightY(y);
-						right = x;
-					}
-					if(y > bottom)
-					{
-						model.setMostBottomX(x);
-						model.setMostBottomY(y);
-						bottom = y;
-					}
-					
-					if(left + model.getPosX() < 0)
-					{
-						model.setPosX(0 - model.getMostLeftX());
-					}
-					
-					if(right + model.getPosX() > 9)
-					{
-						model.setPosX(5 + model.getMostRightX());
-						
-					}
-				}
-			}
-		}
-		return true;
-	}
 	
-	private void getDistances()
-	{
-		distances = new int[4];
-		for(int i = 0; i < distances.length; ++i)
-		{
-			distances[i] = -1;
-		}
-		
-		for(int x = 0; x < 4; ++x)
-		{
-			for(int y = 3; y >= 0; --y)
-			{
-				if(model.getBrickvalue(x, y) && distances[x] == -1)
-				{
-					while(model.getPosY()+ y + distances[x] < 17
-							&& !model.getMapValue(model.getPosX() + x, model.getPosY() + y + distances[x]) )
-					{
-						++distances[x];
-					}
-					break;
-				}
-			}
-		}
-		
-		if(distances[0] == 0 || distances[1] == 0
-				|| distances[2] == 0 || distances[3] == 0)
-		{
-			collisionAhead = true;
-		}
-		else
-		{
-			collisionAhead = false;
-		}
-	}
+	
+	
 	
 	public void run()
 	{

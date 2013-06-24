@@ -16,7 +16,8 @@ public final class InputHandler implements KeyListener
 	private IModel model;
 	private IView view;
 	
-	public static InputHandler getInstance()
+	
+	protected static InputHandler getInstance()
 	{
 		if(instance == null)
 		{
