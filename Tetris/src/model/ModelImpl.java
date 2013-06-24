@@ -195,5 +195,9 @@ public class ModelImpl implements IModel {
 		// TODO Auto-generated method stub
 		return brick.getScene();
 	}
+	
+	public boolean[][] getMap(){
+		return map.getMap();
+	}
 
 }

@@ -15,11 +15,7 @@ public final class Map {
 
 	private Map() {
 		map = new boolean[10][18];
-		for (int y = 0; y < 18; ++y) {
-			for (int x = 0; x < 10; ++x) {
-				map[x][y] = false;
-			}
-		}
+		
 	}
 
 	public void addBrick(Brick b) {
@@ -40,4 +36,13 @@ public final class Map {
 	public boolean get(int x, int y) {
 		return map[x][y];
 	}
+
+	/**
+	 * @return the map
+	 */
+	public boolean[][] getMap() {
+		return map;
+	}
+	
+	
 }

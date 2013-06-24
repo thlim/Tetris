@@ -14,7 +14,6 @@ import com.google.inject.Singleton;
 public class ViewImpl implements IView {
 
 	private GUI gui;
-	@SuppressWarnings("unused")
 	private TUI tui;
 	/**
 	 * 
@@ -33,6 +32,7 @@ public class ViewImpl implements IView {
 	public void update() {
 		// TODO Auto-generated method stub
 		gui.repaint();
+		tui.printGame();
 	}
 	
 	public GUI getGui(){

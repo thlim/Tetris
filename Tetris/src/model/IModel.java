@@ -115,4 +115,5 @@ public interface IModel {
 	 */
 	int getPosY();
 
+	boolean[][] getMap();
 }

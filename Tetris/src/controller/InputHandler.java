@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import model.IModel;
-import view.GUI;
+import view.IView;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -14,6 +14,7 @@ public final class InputHandler implements KeyListener
 	private static InputHandler instance = null;
 	
 	private IModel model;
+	private IView view;
 	
 	public static InputHandler getInstance()
 	{
@@ -29,7 +30,7 @@ public final class InputHandler implements KeyListener
 	{
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
-		
+		view = injector.getInstance(IView.class);
 	}
 
 	public void keyPressed(KeyEvent e)
@@ -54,8 +55,8 @@ public final class InputHandler implements KeyListener
 			model.turnBrick();
 			break;
 		}
-		GUI.getInstance().repaint();
-		
+		//GUI.getInstance().repaint();
+		view.update();
 	}
 
 	public void keyReleased(KeyEvent e)

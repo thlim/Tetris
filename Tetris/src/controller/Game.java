@@ -59,6 +59,7 @@ public class Game
 			else
 			{
 				moveBrickDown();
+				
 			}
 		}
 	}
@@ -107,7 +108,7 @@ public class Game
 					if(right + model.getPosX() > 9)
 					{
 						model.setPosX(5 + model.getMostRightX());
-						//b.posX = 5 + b.mostRightX;
+						
 					}
 				}
 			}
