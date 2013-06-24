@@ -15,6 +15,8 @@ public final class InputHandler implements KeyListener
 	
 	private IModel model;
 	private IView view;
+
+	private Collision coll;
 	
 	
 	protected static InputHandler getInstance()
@@ -32,6 +34,7 @@ public final class InputHandler implements KeyListener
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
 		view = injector.getInstance(IView.class);
+		coll = Collision.getInstance();
 	}
 
 	public void keyPressed(KeyEvent e)
@@ -43,20 +46,31 @@ public final class InputHandler implements KeyListener
 			break;
 		case 37:
 			model.setPosX(model.getPosX() -1);
-			
+			coll.checkBrickCollision();
+			coll.getDistances();
 			break;
 		case 39:
 			model.setPosX(model.getPosX() +1);
-			
+			coll.checkBrickCollision();
+			coll.getDistances();
 			break;
 		case 40:
 			model.setPosY(model.getPosY() +1);
+			coll.checkBrickCollision();
+			coll.getDistances();
 			break;
 		case 38:
 			model.turnBrick();
+			coll.checkBrickCollision();
+			coll.getDistances();
 			break;
 		}
-		
+		if(coll.isCollisionAhead()){
+			model.addBrick();
+			model.setPosX(model.getPosX() + 4);
+			model.setPosY(0);
+			model.resetBrick((int)(Math.random() * 7));
+		}
 		view.update();
 	}
 

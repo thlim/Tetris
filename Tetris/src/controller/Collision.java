@@ -74,7 +74,7 @@ public class Collision {
 		return true;
 	}
 	
-	protected int[] getDistances()
+	protected void getDistances()
 	{
 		distances = new int[4];
 		for(int i = 0; i < distances.length; ++i)
@@ -107,7 +107,7 @@ public class Collision {
 		{
 			collisionAhead = false;
 		}
-		return distances;
+		
 	}
 
 	/**

@@ -10,7 +10,6 @@ public class Game
 {
 
 	private double 			level;
-	private boolean			collisionAhead;
 	private boolean 		running;
 	private long			timer;
 	private long			time;
@@ -33,7 +32,6 @@ public class Game
 		time 		= 0;
 		state 		= 0;
 		running	 	= true;
-		collisionAhead = false;
 	}
 	
 	public boolean init()
@@ -46,11 +44,10 @@ public class Game
 	{
 		
 		coll.checkBrickCollision();
-		distances = coll.getDistances();
+		coll.getDistances();
 		if(time >= 1000 * level)
 		{
-			System.out.println(distances[0] + ", " + distances[1] + ", "
-					+ distances[2] + ", " + distances[3] + ", " + coll.isCollisionAhead());
+			
 			if(coll.isCollisionAhead())
 			{
 				model.addBrick();
