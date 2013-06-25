@@ -44,8 +44,8 @@ public class Game
 			if(coll.isCollisionAhead())
 			{
 				model.addBrick();
-				model.setPosX(model.getPosX() + 4);
-				model.setPosY(0);
+//				model.setPosX(model.getPosX() + 4);
+//				model.setPosY(0);
 				model.resetBrick((int)(Math.random() * 7));
 			}
 			else
@@ -77,9 +77,9 @@ public class Game
 					time = 0;
 				}
 				break;
-//			case 1:
-//				update(time);
-//				break;
+			case 1:
+				update(time);
+				break;
 			}
 			time += System.currentTimeMillis() - timer;
 		

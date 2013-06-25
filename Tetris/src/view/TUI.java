@@ -32,12 +32,7 @@ public final class TUI
 		tuiMap = new boolean[10][18];
 	}
 	
-	protected void printMenu()
-	{
-		console.printf("Tetris\n");
-		console.printf("\t1) Start game\n");
-		console.printf("\tQ) Exit game\n");
-	}
+	
 	
 	protected void printGame()
 	{

@@ -13,6 +13,8 @@ import com.google.inject.ImplementedBy;
 @ImplementedBy(ModelImpl.class)
 public interface IModel {
 
+	
+	
 	int getScene();
 
 	void resetBrick(int style);
