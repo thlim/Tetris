@@ -9,10 +9,10 @@
  */
 import controller.Game;
 
-class Main {
+final class Main {
 	public static void main(String[] args) {
 		Game g = new Game();
-		// g.init();
+	
 		boolean exit = false;
 		while (!exit) {
 			exit = g.run();

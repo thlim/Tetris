@@ -8,7 +8,7 @@ import com.google.inject.Injector;
 
 public class Game {
 
-	protected double level;
+	private double level;
 	private long timer;
 	private long time;
 	private byte state;
@@ -65,6 +65,6 @@ public class Game {
 		}
 		time += System.currentTimeMillis() - timer;
 
-		return InputHandler.getInstance().exit;
+		return InputHandler.getInstance().isExit();
 	}
 }

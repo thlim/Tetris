@@ -34,13 +34,8 @@ public final class GUI extends Frame {
 		setBackground(Color.white);
 		setVisible(true);
 	}
-
-	@Override
-	public void paint(Graphics g) {
-		int x = 100;
-		int y = 40;
-
-		// DRAWING MAP
+	
+	private void drawMap(final Graphics g, final int x, final int y){
 		for (int j = 0; j < 18; ++j) {
 			for (int i = 0; i < 10; ++i) {
 				boolean mapvalue = model.getMapValue(i, j);
@@ -50,8 +45,50 @@ public final class GUI extends Frame {
 				}
 			}
 		}
+	}
 
-		// DRAWING ACTIVE BRICK
+	@Override
+	public void paint(Graphics g) {
+		int x = 100;
+		int y = 40;
+
+		drawMap(g, x, y);
+		drawBrick(g, x, y);
+		
+
+		// DRAWING BORDERS AT THE END
+		g.setColor(Color.black);
+		g.drawLine(500, 0, 500, 600);
+
+		for (int j = 0; j < 11; ++j) {
+			g.drawLine(j * 30 + x, 0 + y, j * 30 + x, 540 + y);
+		}
+
+		for (int i = 0; i < 19; ++i) {
+			g.drawLine(0 + x, i * 30 + y, 300 + x, i * 30 + y);
+		}
+
+		// DRAWING DEBUG RECT
+		g.setColor(Color.yellow);
+		g.drawRect(model.getPosX() * 30 + x, model.getPosY() * 30 + y, 120, 120);
+		// DEBUG MONITOR
+		g.setColor(Color.black);
+		g.drawString("DEBUG MONITOR:", 600, 50);
+		g.drawString(
+				"ActiveBrick (" + model.getPosX() + " | " + model.getPosY()
+						+ ")", 600, 70);
+		g.drawString(
+				"most left: " + model.getMostLeftX() + " | "
+						+ model.getMostLeftY(), 600, 90);
+		g.drawString(
+				"most right: " + model.getMostRightX() + " | "
+						+ model.getMostRightY(), 600, 110);
+		g.drawString(
+				"most bottom: " + model.getMostBottomX() + " | "
+						+ model.getMostBottomY(), 600, 130);
+	}
+
+	private void drawBrick(Graphics g, int x, int y) {
 		for (int j = 0; j < 4; ++j) {
 			for (int i = 0; i < 4; ++i) {
 				boolean brickvalue = model.getBrickvalue(i, j);
@@ -84,36 +121,6 @@ public final class GUI extends Frame {
 				}
 			}
 		}
-
-		// DRAWING BORDERS AT THE END
-		g.setColor(Color.black);
-		g.drawLine(500, 0, 500, 600);
-
-		for (int j = 0; j < 11; ++j) {
-			g.drawLine(j * 30 + x, 0 + y, j * 30 + x, 540 + y);
-		}
-
-		for (int i = 0; i < 19; ++i) {
-			g.drawLine(0 + x, i * 30 + y, 300 + x, i * 30 + y);
-		}
-
-		// DRAWING DEBUG RECT
-		g.setColor(Color.yellow);
-		g.drawRect(model.getPosX() * 30 + x, model.getPosY() * 30 + y, 120, 120);
-		// DEBUG MONITOR
-		g.setColor(Color.black);
-		g.drawString("DEBUG MONITOR:", 600, 50);
-		g.drawString(
-				"ActiveBrick (" + model.getPosX() + " | " + model.getPosY()
-						+ ")", 600, 70);
-		g.drawString(
-				"most left: " + model.getMostLeftX() + " | "
-						+ model.getMostLeftY(), 600, 90);
-		g.drawString(
-				"most right: " + model.getMostRightX() + " | "
-						+ model.getMostRightY(), 600, 110);
-		g.drawString(
-				"most bottom: " + model.getMostBottomX() + " | "
-						+ model.getMostBottomY(), 600, 130);
+		
 	}
 }

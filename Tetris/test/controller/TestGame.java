@@ -24,18 +24,7 @@ public class TestGame {
 
 	}
 
-	@Test
-	public void testRun2() {
-		game.level = -1;
-		assertFalse(game.run());
-	}
-
-	@Test
-	public void testRun3() {
-		game.level = -1;
-		coll.collisionAhead = true;
-		assertFalse(game.run());
-	}
+	
 
 	@After
 	public void afterTest() {

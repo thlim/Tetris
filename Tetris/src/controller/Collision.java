@@ -5,11 +5,11 @@ import com.google.inject.Injector;
 
 import model.IModel;
 
-public class Collision {
+public final class Collision {
 
 	private IModel model;
 	private int[] distances;
-	protected boolean collisionAhead;
+	private boolean collisionAhead;
 	private static Collision instance = null;
 
 	private Collision() {
@@ -64,10 +64,7 @@ public class Collision {
 	}
 
 	protected void getDistances() {
-		distances = new int[4];
-		for (int i = 0; i < distances.length; ++i) {
-			distances[i] = -1;
-		}
+		resetDistances();
 
 		for (int x = 0; x < 4; ++x) {
 			for (int y = 3; y >= 0; --y) {
@@ -90,6 +87,7 @@ public class Collision {
 			collisionAhead = false;
 		}
 
+		
 	}
 
 	/**
@@ -99,4 +97,11 @@ public class Collision {
 		return collisionAhead;
 	}
 
+	private void resetDistances(){
+		distances = new int[4];
+		for (int i = 0; i < distances.length; ++i) {
+			distances[i] = -1;
+		}
+		
+	}
 }
