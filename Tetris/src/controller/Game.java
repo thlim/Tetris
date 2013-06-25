@@ -37,8 +37,7 @@ public class Game {
 
 			if (coll.isCollisionAhead()) {
 				model.addBrick();
-				// model.setPosX(model.getPosX() + 4);
-				// model.setPosY(0);
+				
 				model.resetBrick((int) (Math.random() * 7));
 			} else {
 				model.setPosY(model.getPosY() + 1);

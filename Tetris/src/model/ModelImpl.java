@@ -15,15 +15,17 @@ public class ModelImpl implements IModel {
 	private int mostRightY;
 	private int mostBottomX;
 	private int mostBottomY;
+	private int lastScene;
 
 	@Inject
 	public ModelImpl() {
 		mostLeftX = 4;
 		mostRightX = -1;
 		mostBottomY = -1;
-
+		lastScene = 0;
 		brick = Brick.getInstance();
 		map = Map.getInstance();
+		
 	}
 
 	@Override
@@ -54,7 +56,9 @@ public class ModelImpl implements IModel {
 	@Override
 	public void addBrick() {
 		// TODO Auto-generated method stub
+		lastScene = brick.getScene();
 		map.addBrick(brick);
+		
 	}
 
 	@Override
@@ -210,6 +214,18 @@ public class ModelImpl implements IModel {
 	public int getScene() {
 		// TODO Auto-generated method stub
 		return brick.getScene();
+	}
+
+	@Override
+	public int getLastScene() {
+		// TODO Auto-generated method stub
+		return lastScene;
+	}
+
+	@Override
+	public int getMapColor(int x, int y) {
+		// TODO Auto-generated method stub
+		return map.getMapColor(x, y);
 	}
 
 }

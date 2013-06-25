@@ -12,10 +12,21 @@ public final class Map {
 	}
 
 	private static boolean map[][];
+	private static int mapColor[][];
 
 	private Map() {
 		map = new boolean[10][18];
-
+		mapColor = new int[10][18];
+		initMapColor();
+	}
+	private void initMapColor(){
+		
+		for(int y = 0; y < 18; ++y){
+			for(int x = 0; x < 10; ++x){
+				mapColor[x][y]= -1;
+			}
+		}
+		
 	}
 
 	protected void addBrick(Brick b) {
@@ -24,6 +35,7 @@ public final class Map {
 				if (b.get(x, y) && (b.getPosY() + y) < 18
 						&& (b.getPosX() + x) < 10) {
 					map[b.getPosX() + x][b.getPosY() + y] = true;
+					mapColor[b.getPosX() + x][b.getPosY() + y] = b.getScene();
 				}
 			}
 		}
@@ -75,6 +87,10 @@ public final class Map {
 			}
 		}
 
+	}
+	
+	protected int getMapColor(int x, int y){
+		return mapColor[x][y];
 	}
 
 }

@@ -9,7 +9,7 @@
  */
 import controller.Game;
 
-final class Main {
+final class Tetris {
 	public static void main(String[] args) {
 		Game g = new Game();
 	
