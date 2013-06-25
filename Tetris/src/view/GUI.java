@@ -44,7 +44,7 @@ public final class GUI extends Frame {
 		for (int j = 0; j < 18; ++j) {
 			for (int i = 0; i < 10; ++i) {
 				boolean mapvalue = model.getMapValue(i, j);
-				if ( mapvalue ) {
+				if (mapvalue) {
 					g.setColor(Color.red);
 					g.fillRect(i * 30 + x, j * 30 + y, 30, 30);
 				}
@@ -55,7 +55,7 @@ public final class GUI extends Frame {
 		for (int j = 0; j < 4; ++j) {
 			for (int i = 0; i < 4; ++i) {
 				boolean brickvalue = model.getBrickvalue(i, j);
-				if ( brickvalue ) {
+				if (brickvalue) {
 					switch (model.getScene()) {
 					case 0:
 						g.setColor(Color.red);

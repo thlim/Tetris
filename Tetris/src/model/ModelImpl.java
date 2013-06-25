@@ -8,8 +8,6 @@ public class ModelImpl implements IModel {
 
 	private Brick brick;
 	private Map map;
-	
-	
 
 	private int mostLeftX;
 	private int mostLeftY;
@@ -23,7 +21,7 @@ public class ModelImpl implements IModel {
 		mostLeftX = 4;
 		mostRightX = -1;
 		mostBottomY = -1;
-		
+
 		brick = Brick.getInstance();
 		map = Map.getInstance();
 	}
@@ -34,7 +32,7 @@ public class ModelImpl implements IModel {
 		mostLeftX = 4;
 		mostRightX = -1;
 		mostBottomY = -1;
-		
+
 		brick.resetBrick(style);
 
 	}
@@ -47,11 +45,10 @@ public class ModelImpl implements IModel {
 
 	@Override
 	public boolean getBrickvalue(int x, int y) {
-		
-		
+
 		return brick.get(x, y);
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -63,8 +60,7 @@ public class ModelImpl implements IModel {
 	@Override
 	public boolean getMapValue(int x, int y) {
 		// TODO Auto-generated method stub
-		
-		
+
 		return map.get(x, y);
 	}
 
@@ -74,20 +70,19 @@ public class ModelImpl implements IModel {
 		map.set(x, y, value);
 	}
 
-
-
-	
-
 	/**
 	 * @return the posX
 	 */
+	@Override
 	public int getPosX() {
 		return brick.getPosX();
 	}
 
 	/**
-	 * @param posX the posX to set
+	 * @param posX
+	 *            the posX to set
 	 */
+	@Override
 	public void setPosX(int posX) {
 		brick.setPosX(posX);
 	}
@@ -95,13 +90,16 @@ public class ModelImpl implements IModel {
 	/**
 	 * @return the posY
 	 */
+	@Override
 	public int getPosY() {
 		return brick.getPosY();
 	}
 
 	/**
-	 * @param posY the posY to set
+	 * @param posY
+	 *            the posY to set
 	 */
+	@Override
 	public void setPosY(int posY) {
 		brick.setPosY(posY);
 	}
@@ -109,13 +107,16 @@ public class ModelImpl implements IModel {
 	/**
 	 * @return the mostLeftX
 	 */
+	@Override
 	public int getMostLeftX() {
 		return mostLeftX;
 	}
 
 	/**
-	 * @param mostLeftX the mostLeftX to set
+	 * @param mostLeftX
+	 *            the mostLeftX to set
 	 */
+	@Override
 	public void setMostLeftX(int mostLeftX) {
 		this.mostLeftX = mostLeftX;
 	}
@@ -123,13 +124,16 @@ public class ModelImpl implements IModel {
 	/**
 	 * @return the mostLeftY
 	 */
+	@Override
 	public int getMostLeftY() {
 		return mostLeftY;
 	}
 
 	/**
-	 * @param mostLeftY the mostLeftY to set
+	 * @param mostLeftY
+	 *            the mostLeftY to set
 	 */
+	@Override
 	public void setMostLeftY(int mostLeftY) {
 		this.mostLeftY = mostLeftY;
 	}
@@ -137,13 +141,16 @@ public class ModelImpl implements IModel {
 	/**
 	 * @return the mostRightX
 	 */
+	@Override
 	public int getMostRightX() {
 		return mostRightX;
 	}
 
 	/**
-	 * @param mostRightX the mostRightX to set
+	 * @param mostRightX
+	 *            the mostRightX to set
 	 */
+	@Override
 	public void setMostRightX(int mostRightX) {
 		this.mostRightX = mostRightX;
 	}
@@ -151,13 +158,16 @@ public class ModelImpl implements IModel {
 	/**
 	 * @return the mostRightY
 	 */
+	@Override
 	public int getMostRightY() {
 		return mostRightY;
 	}
 
 	/**
-	 * @param mostRightY the mostRightY to set
+	 * @param mostRightY
+	 *            the mostRightY to set
 	 */
+	@Override
 	public void setMostRightY(int mostRightY) {
 		this.mostRightY = mostRightY;
 	}
@@ -165,13 +175,16 @@ public class ModelImpl implements IModel {
 	/**
 	 * @return the mostBottomX
 	 */
+	@Override
 	public int getMostBottomX() {
 		return mostBottomX;
 	}
 
 	/**
-	 * @param mostBottomX the mostBottomX to set
+	 * @param mostBottomX
+	 *            the mostBottomX to set
 	 */
+	@Override
 	public void setMostBottomX(int mostBottomX) {
 		this.mostBottomX = mostBottomX;
 	}
@@ -179,13 +192,16 @@ public class ModelImpl implements IModel {
 	/**
 	 * @return the mostBottomY
 	 */
+	@Override
 	public int getMostBottomY() {
 		return mostBottomY;
 	}
 
 	/**
-	 * @param mostBottomY the mostBottomY to set
+	 * @param mostBottomY
+	 *            the mostBottomY to set
 	 */
+	@Override
 	public void setMostBottomY(int mostBottomY) {
 		this.mostBottomY = mostBottomY;
 	}
@@ -195,7 +211,5 @@ public class ModelImpl implements IModel {
 		// TODO Auto-generated method stub
 		return brick.getScene();
 	}
-	
-	
 
 }

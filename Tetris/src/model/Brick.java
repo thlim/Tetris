@@ -8,7 +8,7 @@ public final class Brick {
 	private int posY;
 
 	private Brick() {
-		
+
 		resetBrick((int) (Math.random() * 7));
 
 	}

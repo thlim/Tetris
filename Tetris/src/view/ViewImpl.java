@@ -8,24 +8,27 @@ import com.google.inject.Singleton;
 
 /**
  * @author Bombilla
- *
+ * 
  */
 @Singleton
 public class ViewImpl implements IView {
 
 	private GUI gui;
 	private TUI tui;
+
 	/**
 	 * 
 	 */
 	@Inject
 	public ViewImpl() {
 		gui = GUI.getInstance();
-		
+
 		tui = TUI.getInstance();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see view.IView#update()
 	 */
 	@Override
@@ -34,8 +37,9 @@ public class ViewImpl implements IView {
 		gui.repaint();
 		tui.printGame();
 	}
-	
-	public GUI getGui(){
+
+	@Override
+	public GUI getGui() {
 		return gui;
 	}
 

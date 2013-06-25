@@ -9,53 +9,47 @@ import view.IView;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-public final class InputHandler implements KeyListener
-{
+public final class InputHandler implements KeyListener {
 	private static InputHandler instance = null;
-	
+
 	private IModel model;
 	private IView view;
 	public boolean exit;
 	private Collision coll;
-	
-	
-	public static InputHandler getInstance()
-	{
-		if(instance == null)
-		{
+
+	public static InputHandler getInstance() {
+		if (instance == null) {
 			instance = new InputHandler();
 			return instance;
 		}
 		return instance;
 	}
-	
-	private InputHandler()
-	{
+
+	private InputHandler() {
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
 		view = injector.getInstance(IView.class);
 		coll = Collision.getInstance();
 	}
 
-	public void keyPressed(KeyEvent e)
-	{
-		switch(e.getKeyCode())
-		{
+	@Override
+	public void keyPressed(KeyEvent e) {
+		switch (e.getKeyCode()) {
 		case 27:
 			exit = true;
 			break;
 		case 37:
-			model.setPosX(model.getPosX() -1);
+			model.setPosX(model.getPosX() - 1);
 			coll.checkBrickCollision();
 			coll.getDistances();
 			break;
 		case 39:
-			model.setPosX(model.getPosX() +1);
+			model.setPosX(model.getPosX() + 1);
 			coll.checkBrickCollision();
 			coll.getDistances();
 			break;
 		case 40:
-			model.setPosY(model.getPosY() +1);
+			model.setPosY(model.getPosY() + 1);
 			coll.checkBrickCollision();
 			coll.getDistances();
 			break;
@@ -65,10 +59,10 @@ public final class InputHandler implements KeyListener
 			coll.getDistances();
 			break;
 		}
-		if(coll.isCollisionAhead()){
+		if (coll.isCollisionAhead()) {
 			model.addBrick();
-			
-			model.resetBrick((int)(Math.random() * 7));
+
+			model.resetBrick((int) (Math.random() * 7));
 		}
 		view.update();
 	}
@@ -76,14 +70,13 @@ public final class InputHandler implements KeyListener
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
 }

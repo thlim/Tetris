@@ -6,5 +6,6 @@ import com.google.inject.ImplementedBy;
 public interface IView {
 
 	void update();
+
 	GUI getGui();
 }

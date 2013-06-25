@@ -9,14 +9,12 @@
  */
 import controller.Game;
 
-class Main
-{
-	public static void main(String[] args)
-	{
+class Main {
+	public static void main(String[] args) {
 		Game g = new Game();
-		//g.init();
+		// g.init();
 		boolean exit = false;
-		while(!exit){
+		while (!exit) {
 			exit = g.run();
 		}
 		System.exit(0);

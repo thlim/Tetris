@@ -6,7 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TestModelImpl {
-	
+
 	static ModelImpl model;
 
 	@BeforeClass
@@ -17,7 +17,7 @@ public class TestModelImpl {
 	@Test
 	public void testGetBrickvalue() {
 		assertNotNull(model.getBrickvalue(0, 0));
-		
+
 	}
 
 	@Test
@@ -85,8 +85,9 @@ public class TestModelImpl {
 		model.setMostBottomY(1);
 		assertEquals(model.getMostBottomY(), 1);
 	}
+
 	@Test
-	public void testResetBrick(){
+	public void testResetBrick() {
 		model.resetBrick(0);
 		assertEquals(model.getScene(), 0);
 		model.resetBrick(1);
@@ -108,25 +109,22 @@ public class TestModelImpl {
 		model.turnBrick();
 		assertNotNull(model.getBrickvalue(0, 0));
 	}
-	
-	@Test 
-	public void setTest(){
+
+	@Test
+	public void setTest() {
 		int expect = 4;
 		model.setPosX(expect);
 		model.setPosY(expect);
 		assertEquals(expect, model.getPosX());
 		assertEquals(expect, model.getPosY());
 	}
-	
+
 	@Test
 	public void testAddBrick() {
 		model.addBrick();
-		for(int y = 0; y < 4; ++y)
-		{
-			for(int x = 0; x < 4; ++x)
-			{
-				if(model.getBrickvalue(x, y) == true)
-				{
+		for (int y = 0; y < 4; ++y) {
+			for (int x = 0; x < 4; ++x) {
+				if (model.getBrickvalue(x, y) == true) {
 					assertTrue(true);
 				}
 			}
@@ -138,7 +136,5 @@ public class TestModelImpl {
 		model.setMapValue(0, 0, true);
 		assertTrue(model.getMapValue(0, 0));
 	}
-
-	
 
 }

@@ -13,7 +13,7 @@ public class TestTUI {
 
 	TUI tui;
 	IModel model;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		tui = TUI.getInstance();
