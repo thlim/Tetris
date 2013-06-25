@@ -9,7 +9,7 @@ public class Collision {
 
 	private IModel model;
 	private int[] distances;
-	private boolean collisionAhead;
+	protected boolean collisionAhead;
 	private static Collision instance = null;
 	
 	private Collision(){
@@ -88,8 +88,8 @@ public class Collision {
 			{
 				if(model.getBrickvalue(x, y) && distances[x] == -1)
 				{
-					while(model.getPosY()+ y + distances[x] < 17
-							&& !model.getMapValue(model.getPosX() + x, model.getPosY() + y + distances[x]) )
+					while(model.getPosY()+ y + distances[x] < 17 && model.getPosX() < 10
+							&& !model.getMapValue(model.getPosX() + x , model.getPosY() + y + distances[x]) )
 					{
 						++distances[x];
 					}

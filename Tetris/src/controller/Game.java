@@ -9,12 +9,10 @@ import com.google.inject.Injector;
 public class Game
 {
 
-	private double 			level;
-	private boolean 		running;
+	protected double 			level;
 	private long			timer;
 	private long			time;
 	private byte			state;
-	private int[]			distances;
 	private IModel model;
 	private IView view;
 	private Collision coll;
@@ -23,7 +21,7 @@ public class Game
 	{
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
-		InputHandler.getInstance();
+		
 		coll = Collision.getInstance();
 		view = injector.getInstance(IView.class);
 		view.getGui().addKeyListener(InputHandler.getInstance());
@@ -31,14 +29,9 @@ public class Game
 		timer 		= 0;
 		time 		= 0;
 		state 		= 0;
-		running	 	= true;
 	}
 	
-	public boolean init()
-	{
-		timer = System.currentTimeMillis();
-		return true;
-	}
+	
 	
 	private void update(long time)
 	{
@@ -57,25 +50,21 @@ public class Game
 			}
 			else
 			{
-				moveBrickDown();
+				model.setPosY(model.getPosY() +1);
 				
 			}
 		}
 	}
 	
-	private void moveBrickDown()
+	
+	
+	
+	
+	
+	
+	public boolean run()
 	{
-		model.setPosY(model.getPosY() +1);
-	}
-	
-	
-	
-	
-	
-	public void run()
-	{
-		while(running)
-		{
+		
 			timer = System.currentTimeMillis();
 			switch(state)
 			{
@@ -88,11 +77,12 @@ public class Game
 					time = 0;
 				}
 				break;
-			case 1:
-				update(time);
-				break;
+//			case 1:
+//				update(time);
+//				break;
 			}
 			time += System.currentTimeMillis() - timer;
-		}
+		
+		return InputHandler.getInstance().exit;
 	}
 }

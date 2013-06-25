@@ -38,12 +38,7 @@ public final class Map {
 		return map[x][y];
 	}
 
-	/**
-	 * @return the map
-	 */
-	protected boolean[][] getMap() {
-		return map;
-	}
+	
 	
 	private void checkLineFull(){
 		

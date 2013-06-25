@@ -2,7 +2,9 @@ package model;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TestMap {
@@ -11,41 +13,44 @@ public class TestMap {
 	Brick brick;
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUpBefore() throws Exception {
 		map = Map.getInstance();
 		brick = Brick.getInstance();
-	}
-
-	@Test
-	public void testGetInstance() {
-		assertNotNull(Map.getInstance());
-	}
-
-	@Test
-	public void testAddBrick() {
-		map.addBrick(brick);
-		for(int y = 0; y < 4; ++y)
-		{
-			for(int x = 0; x < 4; ++x)
-			{
-				if(brick.get(x,y) == true)
-				{
-					assertTrue(true);
-				}
-			}
+		for (int x = 0; x < 10; ++x){
+			map.set(x, 17, true);
+			
 		}
+		
+	}
+
+	@After
+	public void after(){
+		map = null;
+		brick = null;
+		
+	}
+	
+	
+
+	@Test
+	public void testAddBrickandDeleteLine() {
+		
+		map.addBrick(brick);
+		assertTrue(true);
 	}
 
 	@Test
 	public void testSet() {
-		map.set(0, 0, true);
-		assertTrue(map.get(0, 0));
+		map.set(5, 4, true);
+		assertTrue(map.get(5, 4));
 	}
 
 	@Test
 	public void testGet() {
-		map.set(0, 0, true);
-		assertTrue(map.get(0, 0));
+		map.set(5, 5, true);
+		assertTrue(map.get(5, 5));
 	}
+	
+	
 
 }

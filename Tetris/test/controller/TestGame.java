@@ -11,17 +11,40 @@ public class TestGame {
 
 	Robot robo;
 	Game game;
-	Brick brick;
+	Collision coll;
 	
 	@Before
 	public void setUpBefore() throws Exception {
 		game = new Game();
+		coll = Collision.getInstance();
 		
 	}
 
+	
+	
 	@Test
-	public void testGame() {
-		assertNotNull(game);
+	public void testRun(){
+		assertFalse(game.run());
+		
+	}
+	
+	@Test
+	public void testRun2(){
+		game.level = -1;
+		assertFalse(game.run());
+	}
+	
+	@Test
+	public void testRun3(){
+		game.level = -1;
+		coll.collisionAhead = true;
+		assertFalse(game.run());
+	}
+	
+	@After
+	public void afterTest(){
+		game = null;
+		coll = null;
 	}
 
 	

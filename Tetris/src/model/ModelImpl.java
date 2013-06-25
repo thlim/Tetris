@@ -196,8 +196,6 @@ public class ModelImpl implements IModel {
 		return brick.getScene();
 	}
 	
-	public boolean[][] getMap(){
-		return map.getMap();
-	}
+	
 
 }

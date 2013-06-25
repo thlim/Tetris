@@ -15,11 +15,11 @@ public final class InputHandler implements KeyListener
 	
 	private IModel model;
 	private IView view;
-
+	public boolean exit;
 	private Collision coll;
 	
 	
-	protected static InputHandler getInstance()
+	public static InputHandler getInstance()
 	{
 		if(instance == null)
 		{
@@ -42,7 +42,7 @@ public final class InputHandler implements KeyListener
 		switch(e.getKeyCode())
 		{
 		case 27:
-			System.exit(0);
+			exit = true;
 			break;
 		case 37:
 			model.setPosX(model.getPosX() -1);
@@ -74,11 +74,17 @@ public final class InputHandler implements KeyListener
 		view.update();
 	}
 
-	public void keyReleased(KeyEvent e)
-	{
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void keyTyped(KeyEvent arg0)
-	{
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
+
+	
 }
