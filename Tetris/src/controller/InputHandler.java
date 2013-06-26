@@ -45,19 +45,28 @@ public final class InputHandler implements KeyListener
 			exit = true;
 			break;
 		case 37:
-			model.setPosX(model.getPosX() -1);
-			coll.checkBrickCollision();
-			coll.getDistances();
+			if(coll.checkBrickCollisionLeft())
+			{
+				model.setPosX(model.getPosX() -1);
+			}
 			break;
 		case 39:
-			model.setPosX(model.getPosX() +1);
-			coll.checkBrickCollision();
-			coll.getDistances();
+			if(coll.checkBrickCollisionRight())
+			{
+				model.setPosX(model.getPosX() +1);
+			}
 			break;
 		case 40:
-			model.setPosY(model.getPosY() +1);
-			coll.checkBrickCollision();
-			coll.getDistances();
+			if(coll.checkBrickCollisionDown())
+			{
+				model.setPosY(model.getPosY() +1);
+			}
+			else
+			{
+				model.addBrick();
+				coll.resetCollisionAhead();
+				model.resetBrick((int) (Math.random() * 7));
+			}
 			break;
 		case 38:
 			model.turnBrick();
@@ -65,11 +74,11 @@ public final class InputHandler implements KeyListener
 			coll.getDistances();
 			break;
 		}
-		if(coll.isCollisionAhead()){
+		/*if(coll.isCollisionAhead()){
 			model.addBrick();
 			
 			model.resetBrick((int)(Math.random() * 7));
-		}
+		}*/
 		view.update();
 	}
 

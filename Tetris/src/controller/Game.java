@@ -15,8 +15,10 @@ public class Game {
 	private IModel model;
 	private IView view;
 	private Collision coll;
+	private boolean consoleFlag;
+	private boolean consoleOnlyFlag;
 
-	public Game() {
+	public Game(boolean console, boolean consoleOnly) {
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
 
@@ -27,21 +29,33 @@ public class Game {
 		timer = 0;
 		time = 0;
 		state = 0;
+		
+		consoleFlag = console;
+		consoleOnlyFlag = consoleOnly;
+		if(consoleFlag)
+		{
+			// CONSOLE AKTIVIEREN
+		}
+		if(consoleOnlyFlag)
+		{
+			// CONSOLE AKTIVIEREN UND GUI DEAKTIVIEREN
+		}
+		
 	}
 
 	private void update(long time) {
 
-		coll.checkBrickCollision();
-		coll.getDistances();
 		if (time >= 1000 * level) {
 
 			if (coll.isCollisionAhead()) {
 				model.addBrick();
-				
+				coll.resetCollisionAhead();
 				model.resetBrick((int) (Math.random() * 7));
 			} else {
-				model.setPosY(model.getPosY() + 1);
-
+				if(coll.checkBrickCollisionDown())
+				{
+					model.setPosY(model.getPosY() + 1);
+				}
 			}
 		}
 	}

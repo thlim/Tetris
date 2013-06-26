@@ -13,7 +13,7 @@ public class TestGame {
 
 	@Before
 	public void setUpBefore() throws Exception {
-		game = new Game();
+		game = new Game(false, false);
 		coll = Collision.getInstance();
 
 	}
