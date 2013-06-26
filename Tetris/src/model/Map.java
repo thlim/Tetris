@@ -19,14 +19,15 @@ public final class Map {
 		mapColor = new int[10][18];
 		initMapColor();
 	}
-	private void initMapColor(){
-		
-		for(int y = 0; y < 18; ++y){
-			for(int x = 0; x < 10; ++x){
-				mapColor[x][y]= -1;
+
+	private void initMapColor() {
+
+		for (int y = 0; y < 18; ++y) {
+			for (int x = 0; x < 10; ++x) {
+				mapColor[x][y] = -1;
 			}
 		}
-		
+
 	}
 
 	protected void addBrick(Brick b) {
@@ -88,8 +89,8 @@ public final class Map {
 		}
 
 	}
-	
-	protected int getMapColor(int x, int y){
+
+	protected int getMapColor(int x, int y) {
 		return mapColor[x][y];
 	}
 

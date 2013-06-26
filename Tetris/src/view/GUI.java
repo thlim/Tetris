@@ -34,13 +34,13 @@ public final class GUI extends Frame {
 		setBackground(Color.white);
 		setVisible(true);
 	}
-	
-	private void drawMap(final Graphics g, final int x, final int y){
+
+	private void drawMap(final Graphics g, final int x, final int y) {
 		for (int j = 0; j < 18; ++j) {
 			for (int i = 0; i < 10; ++i) {
 				boolean mapvalue = model.getMapValue(i, j);
 				if (mapvalue) {
-					
+
 					g.setColor(getColor(model.getMapColor(i, j)));
 					g.fillRect(i * 30 + x, j * 30 + y, 30, 30);
 				}
@@ -55,7 +55,6 @@ public final class GUI extends Frame {
 
 		drawMap(g, x, y);
 		drawBrick(g, x, y);
-		
 
 		// DRAWING BORDERS AT THE END
 		g.setColor(Color.black);
@@ -94,41 +93,41 @@ public final class GUI extends Frame {
 			for (int i = 0; i < 4; ++i) {
 				boolean brickvalue = model.getBrickvalue(i, j);
 				if (brickvalue) {
-					
-						g.setColor(getColor(model.getScene()));
-					
+
+					g.setColor(getColor(model.getScene()));
+
 					g.fillRect((model.getPosX() + i) * 30 + x,
 							(model.getPosY() + j) * 30 + y, 30, 30);
 				}
 			}
 		}
-		
+
 	}
-	
-	private Color getColor(int scene){
+
+	private Color getColor(int scene) {
 		switch (scene) {
 		case 0:
 			return Color.red;
 		case 1:
 			return Color.green;
-			
+
 		case 2:
 			return Color.blue;
-			
+
 		case 3:
 			return Color.magenta;
-			
+
 		case 4:
 			return Color.orange;
-			
+
 		case 5:
 			return Color.cyan;
-			
+
 		case 6:
 			return Color.pink;
-			
+
 		}
 		return null;
 	}
-	
+
 }

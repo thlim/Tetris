@@ -14,8 +14,9 @@ import com.google.inject.ImplementedBy;
 public interface IModel {
 
 	int getMapColor(int x, int y);
+
 	int getLastScene();
-	
+
 	int getScene();
 
 	void resetBrick(int style);

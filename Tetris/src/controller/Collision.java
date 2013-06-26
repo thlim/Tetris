@@ -26,63 +26,48 @@ public final class Collision {
 	}
 
 	protected boolean checkBrickCollision() {
-		
-		
+
 		return true;
 	}
 
-	protected boolean checkBrickCollisionLeft()
-	{
-		for(int dx = 3; dx >= 0; --dx)
-		{
-			for(int dy = 0; dy < 4; ++dy)
-			{
+	protected boolean checkBrickCollisionLeft() {
+		for (int dx = 3; dx >= 0; --dx) {
+			for (int dy = 0; dy < 4; ++dy) {
 				int offsetX = model.getPosX() + dx - 1;
 				int offsetY = model.getPosY() + dy;
-				if(offsetY < 18 && ((offsetX < 0
-						|| model.getMapValue(offsetX, offsetY))
-						&& model.getBrickvalue(dx, dy)))
-				{
+				if (offsetY < 18
+						&& ((offsetX < 0 || model.getMapValue(offsetX, offsetY)) && model
+								.getBrickvalue(dx, dy))) {
 					return false;
 				}
 			}
 		}
 		return true;
 	}
-	
-	protected boolean checkBrickCollisionRight()
-	{
-		for(int dx = 0; dx < 4; ++dx)
-		{
-			for(int dy = 0; dy < 4; ++dy)
-			{
+
+	protected boolean checkBrickCollisionRight() {
+		for (int dx = 0; dx < 4; ++dx) {
+			for (int dy = 0; dy < 4; ++dy) {
 				int offsetX = model.getPosX() + dx + 1;
 				int offsetY = model.getPosY() + dy;
-				if(offsetY < 18 && ((offsetX > 9
-						|| model.getMapValue(offsetX, offsetY))
-						&&	model.getBrickvalue(dx, dy)))
-				{
+				if (offsetY < 18
+						&& ((offsetX > 9 || model.getMapValue(offsetX, offsetY)) && model
+								.getBrickvalue(dx, dy))) {
 					return false;
 				}
 			}
 		}
 		return true;
 	}
-	
-	protected boolean checkBrickCollisionDown()
-	{
-		for(int dy = 0; dy < 4; ++dy)
-		{
-			for(int dx = 0; dx < 4; ++dx)
-			{
+
+	protected boolean checkBrickCollisionDown() {
+		for (int dy = 0; dy < 4; ++dy) {
+			for (int dx = 0; dx < 4; ++dx) {
 				int offsetX = model.getPosX() + dx;
 				int offsetY = model.getPosY() + dy + 1;
-				if(offsetX >= 0 && offsetX < 10)
-				{
-					if((offsetY > 17
-						|| model.getMapValue(offsetX, offsetY))
-						&& model.getBrickvalue(dx, dy))
-					{
+				if (offsetX >= 0 && offsetX < 10) {
+					if ((offsetY > 17 || model.getMapValue(offsetX, offsetY))
+							&& model.getBrickvalue(dx, dy)) {
 						collisionAhead = true;
 						return false;
 					}
@@ -91,7 +76,7 @@ public final class Collision {
 		}
 		return true;
 	}
-	
+
 	protected void getDistances() {
 		resetDistances();
 
@@ -116,7 +101,6 @@ public final class Collision {
 			collisionAhead = false;
 		}
 
-		
 	}
 
 	/**
@@ -126,16 +110,15 @@ public final class Collision {
 		return collisionAhead;
 	}
 
-	protected void resetCollisionAhead()
-	{
+	protected void resetCollisionAhead() {
 		collisionAhead = false;
 	}
-	
-	private void resetDistances(){
+
+	private void resetDistances() {
 		distances = new int[4];
 		for (int i = 0; i < distances.length; ++i) {
 			distances[i] = -1;
 		}
-		
+
 	}
 }

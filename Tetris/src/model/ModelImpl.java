@@ -25,7 +25,7 @@ public class ModelImpl implements IModel {
 		lastScene = 0;
 		brick = Brick.getInstance();
 		map = Map.getInstance();
-		
+
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class ModelImpl implements IModel {
 		// TODO Auto-generated method stub
 		lastScene = brick.getScene();
 		map.addBrick(brick);
-		
+
 	}
 
 	@Override

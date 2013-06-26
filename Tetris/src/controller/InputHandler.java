@@ -9,60 +9,48 @@ import view.IView;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-public final class InputHandler implements KeyListener
-{
+public final class InputHandler implements KeyListener {
 	private static InputHandler instance = null;
-	
+
 	private IModel model;
 	private IView view;
 	private boolean exit;
 	private Collision coll;
-	
-	
-	public static InputHandler getInstance()
-	{
-		if(instance == null)
-		{
+
+	public static InputHandler getInstance() {
+		if (instance == null) {
 			instance = new InputHandler();
 			return instance;
 		}
 		return instance;
 	}
-	
-	private InputHandler()
-	{
+
+	private InputHandler() {
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
 		view = injector.getInstance(IView.class);
 		coll = Collision.getInstance();
 	}
 
-	public void keyPressed(KeyEvent e)
-	{
-		switch(e.getKeyCode())
-		{
+	public void keyPressed(KeyEvent e) {
+		switch (e.getKeyCode()) {
 		case 27:
 			exit = true;
 			break;
 		case 37:
-			if(coll.checkBrickCollisionLeft())
-			{
-				model.setPosX(model.getPosX() -1);
+			if (coll.checkBrickCollisionLeft()) {
+				model.setPosX(model.getPosX() - 1);
 			}
 			break;
 		case 39:
-			if(coll.checkBrickCollisionRight())
-			{
-				model.setPosX(model.getPosX() +1);
+			if (coll.checkBrickCollisionRight()) {
+				model.setPosX(model.getPosX() + 1);
 			}
 			break;
 		case 40:
-			if(coll.checkBrickCollisionDown())
-			{
-				model.setPosY(model.getPosY() +1);
-			}
-			else
-			{
+			if (coll.checkBrickCollisionDown()) {
+				model.setPosY(model.getPosY() + 1);
+			} else {
 				model.addBrick();
 				coll.resetCollisionAhead();
 				model.resetBrick((int) (Math.random() * 7));
@@ -74,24 +62,24 @@ public final class InputHandler implements KeyListener
 			coll.getDistances();
 			break;
 		}
-		/*if(coll.isCollisionAhead()){
-			model.addBrick();
-			
-			model.resetBrick((int)(Math.random() * 7));
-		}*/
+		/*
+		 * if(coll.isCollisionAhead()){ model.addBrick();
+		 * 
+		 * model.resetBrick((int)(Math.random() * 7)); }
+		 */
 		view.update();
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/**
@@ -101,5 +89,4 @@ public final class InputHandler implements KeyListener
 		return exit;
 	}
 
-	
 }

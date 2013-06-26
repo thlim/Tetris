@@ -29,18 +29,16 @@ public class Game {
 		timer = 0;
 		time = 0;
 		state = 0;
-		
+
 		consoleFlag = console;
 		consoleOnlyFlag = consoleOnly;
-		if(consoleFlag)
-		{
+		if (consoleFlag) {
 			// CONSOLE AKTIVIEREN
 		}
-		if(consoleOnlyFlag)
-		{
+		if (consoleOnlyFlag) {
 			// CONSOLE AKTIVIEREN UND GUI DEAKTIVIEREN
 		}
-		
+
 	}
 
 	private void update(long time) {
@@ -52,8 +50,7 @@ public class Game {
 				coll.resetCollisionAhead();
 				model.resetBrick((int) (Math.random() * 7));
 			} else {
-				if(coll.checkBrickCollisionDown())
-				{
+				if (coll.checkBrickCollisionDown()) {
 					model.setPosY(model.getPosY() + 1);
 				}
 			}

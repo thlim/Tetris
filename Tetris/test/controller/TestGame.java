@@ -24,8 +24,6 @@ public class TestGame {
 
 	}
 
-	
-
 	@After
 	public void afterTest() {
 		game = null;
