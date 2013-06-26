@@ -9,7 +9,7 @@
  */
 import controller.Game;
 
-final class Tetris {
+final class Main {
 	public static void main(String[] args) {
 
 		boolean console = false;
