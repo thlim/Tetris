@@ -53,7 +53,7 @@ public final class InputHandler implements KeyListener {
 			} else {
 				model.addBrick();
 				coll.resetCollisionAhead();
-				model.resetBrick((int) (Math.random() * 7));
+				model.resetBrick(model.getNextScene());
 			}
 			break;
 		case 38:

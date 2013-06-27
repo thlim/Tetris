@@ -55,7 +55,7 @@ public final class GUI extends Frame {
 
 		drawMap(g, x, y);
 		drawBrick(g, x, y);
-		drawPreview(g, x, y, 4);
+		drawPreview(g, x, y, model.getNextScene());
 
 		// DRAWING BORDERS AT THE END
 		g.setColor(Color.black);

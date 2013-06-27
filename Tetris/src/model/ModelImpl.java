@@ -147,4 +147,10 @@ public class ModelImpl implements IModel {
 		map.resetsetLineCount();
 	}
 
+	@Override
+	public int getNextScene()
+	{
+		return brick.getNextScene();
+	}
+
 }

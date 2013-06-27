@@ -17,7 +17,6 @@ public class Game {
 	private Collision coll;
 	private boolean consoleFlag;
 	private boolean consoleOnlyFlag;
-	private int nextScene;
 
 	public Game(boolean console, boolean consoleOnly) {
 		Injector injector = Guice.createInjector();
@@ -30,7 +29,6 @@ public class Game {
 		timer = 0;
 		time = 0;
 		state = 0;
-		nextScene = (int) (Math.random() * 7);
 		
 		consoleFlag = console;
 		consoleOnlyFlag = consoleOnly;
@@ -50,8 +48,7 @@ public class Game {
 			if (coll.isCollisionAhead()) {
 				model.addBrick();
 				coll.resetCollisionAhead();
-				model.resetBrick(nextScene);
-				nextScene = (int) (Math.random() * 7);
+				model.resetBrick(model.getNextScene());
 			} else {
 				if (coll.checkBrickCollisionDown()) {
 					model.setPosY(model.getPosY() + 1);

@@ -5,12 +5,14 @@ public final class Brick {
 	private boolean form[][];
 	private boolean nextForm[][];
 	private int scene;
+	private int nextScene;
 	private int posX;
 	private int posY;
 
 	private Brick() {
 
-		resetBrick((int) (Math.random() * 7));
+		//nextScene = (int) (Math.random() * 7);
+		resetBrick(nextScene);
 	}
 
 	protected static Brick getInstance() {
@@ -101,6 +103,8 @@ public final class Brick {
 		nextForm[1][3] = form[3][2];
 		nextForm[2][3] = form[3][1];
 		nextForm[3][3] = form[3][0];
+		
+		nextScene = (int) (Math.random() * 7);
 	}
 
 	protected void turn() {
@@ -177,5 +181,10 @@ public final class Brick {
 	protected boolean[][] getNextForm()
 	{
 		return nextForm;
+	}
+	
+	protected int getNextScene()
+	{
+		return nextScene;
 	}
 }
