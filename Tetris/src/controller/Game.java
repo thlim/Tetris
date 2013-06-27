@@ -8,7 +8,6 @@ import com.google.inject.Injector;
 
 public class Game {
 
-	private double level;
 	private long timer;
 	private long time;
 	private byte state;
@@ -25,7 +24,6 @@ public class Game {
 		coll = Collision.getInstance();
 		view = injector.getInstance(IView.class);
 		view.getGui().addKeyListener(InputHandler.getInstance());
-		level = 1.0;
 		timer = 0;
 		time = 0;
 		state = 0;

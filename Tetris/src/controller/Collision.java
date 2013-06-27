@@ -30,8 +30,9 @@ public final class Collision {
 				int offsetX = model.getPosX() + dx - 1;
 				int offsetY = model.getPosY() + dy;
 				if (offsetY < 18
-						&& ((offsetX < 0 || model.getMapValue(offsetX, offsetY)) && model
+						&& (((offsetX < 0) || model.getMapValue(offsetX, offsetY)) && model
 								.getBrickvalue(dx, dy))) {
+					System.out.println("checkBrickCollitionLeft = false");
 					return false;
 				}
 			}
@@ -45,8 +46,9 @@ public final class Collision {
 				int offsetX = model.getPosX() + dx + 1;
 				int offsetY = model.getPosY() + dy;
 				if (offsetY < 18
-						&& ((offsetX > 9 || model.getMapValue(offsetX, offsetY)) && model
+						&& (((offsetX > 9) || model.getMapValue(offsetX, offsetY)) && model
 								.getBrickvalue(dx, dy))) {
+					System.out.println("checkBrickCollitionRight = false");
 					return false;
 				}
 			}
@@ -59,10 +61,11 @@ public final class Collision {
 			for (int dx = 0; dx < 4; ++dx) {
 				int offsetX = model.getPosX() + dx;
 				int offsetY = model.getPosY() + dy + 1;
-				if (offsetX >= 0 && offsetX < 10) {
+				if (offsetX >= 0 && offsetX < 10 && offsetY >= 0) {
 					if ((offsetY > 17 || model.getMapValue(offsetX, offsetY))
-							&& model.getBrickvalue(dx, dy)) {
+							&& model.getBrickvalue(dx, dy) && !collisionAhead) {
 						collisionAhead = true;
+						System.out.println("checkBrickCollitionDown = false");
 						return false;
 					}
 				}

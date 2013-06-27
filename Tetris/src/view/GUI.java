@@ -56,6 +56,7 @@ public final class GUI extends Frame {
 		drawMap(g, x, y);
 		drawBrick(g, x, y);
 		drawPreview(g, x, y, model.getNextScene());
+		drawScore(g);
 
 		// DRAWING BORDERS AT THE END
 		g.setColor(Color.black);
@@ -156,6 +157,11 @@ public final class GUI extends Frame {
 				g.drawRect( (x + 500) + 30 * i, (y + 50) + 30 * j, 30, 30);
 			}
 		}
+	}
+	
+	private void drawScore(Graphics g)
+	{
+		g.drawString("Level: " + model.getLevel(), 550, 300);
 	}
 
 	private Color getColor(int scene) {
