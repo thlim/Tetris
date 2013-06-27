@@ -59,7 +59,7 @@ public class Game {
 
 		timer = System.currentTimeMillis();
 		
-		switch (state) {
+		switch (model.getState()) {
 		case 0:
 			update(time);
 			if (time >= 1000 / model.getLevel()) {
@@ -69,9 +69,8 @@ public class Game {
 				time = 0;
 			}
 			break;
-		// case 1:
-		// update(time);
-		// break;
+		case 1:
+			break;
 		}
 		time += System.currentTimeMillis() - timer;
 

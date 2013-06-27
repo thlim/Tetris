@@ -62,4 +62,8 @@ public interface IModel {
 	void resetLineCount();
 	
 	int getNextScene();
+	
+	int getState();
+	
+	void togglePause();
 }

@@ -15,12 +15,16 @@ public final class Map {
 	private static int mapColor[][];
 	private int lineCount;
 	private double level;
+	private int state;
+	private boolean gameOver;
 
 	private Map() {
 		map = new boolean[10][18];
 		mapColor = new int[10][18];
 		lineCount = 0;
 		level = 1.0;
+		state = 0;
+		gameOver = false;
 		initMapColor();
 	}
 
@@ -38,6 +42,7 @@ public final class Map {
 		for (int y = 0; y < 4; ++y) {
 			for (int x = 0; x < 4; ++x) {
 				if (b.get(x, y) && (b.getPosY() + y) < 18
+						&& (b.getPosY() + y >= 0)
 						&& (b.getPosX() + x) < 10) {
 					map[b.getPosX() + x][b.getPosY() + y] = true;
 					mapColor[b.getPosX() + x][b.getPosY() + y] = b.getScene();
@@ -121,5 +126,21 @@ public final class Map {
 	protected double getLevel(){
 		return level;
 	}
-
+	
+	protected void toggleState()
+	{
+		if(state == 0)
+		{
+			state = 1;
+		}
+		else
+		{
+			state = 0;
+		}
+	}
+	
+	protected int getState()
+	{
+		return state;
+	}
 }

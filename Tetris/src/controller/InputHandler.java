@@ -63,6 +63,9 @@ public final class InputHandler implements KeyListener {
 				coll.checkRotationBounds();
 			}
 			break;
+		case 80:
+			model.togglePause();
+			break;
 		}
 		coll.resetCollisionAhead();
 		/*

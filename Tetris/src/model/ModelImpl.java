@@ -159,4 +159,15 @@ public class ModelImpl implements IModel {
 		return map.getLevel();
 	}
 
+	@Override
+	public int getState() {
+		return map.getState();
+	}
+
+	@Override
+	public void togglePause()
+	{
+		map.toggleState();
+	}
+
 }

@@ -100,7 +100,7 @@ public final class Brick {
 
 	protected void resetBrick(int style) {
 		posX = 4;
-		posY = 0;
+		posY = -4;
 
 		scene = style;
 		resetScene(scene);
