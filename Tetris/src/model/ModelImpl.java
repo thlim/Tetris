@@ -141,4 +141,10 @@ public class ModelImpl implements IModel {
 		return map.getLineCount();
 	}
 
+	@Override
+	public void resetLineCount() {
+		// TODO Auto-generated method stub
+		map.resetsetLineCount();
+	}
+
 }

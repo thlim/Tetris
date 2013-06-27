@@ -66,7 +66,8 @@ public class Game {
 			update(time);
 			if (time >= 1000 / level) {
 				if(model.getLineCount() == 5){
-					level = level + 2;
+					level = level + 0.5;
+					model.resetLineCount();
 				}
 				view.update();
 

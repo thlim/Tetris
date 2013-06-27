@@ -109,7 +109,7 @@ public final class Map {
 	/**
 	 * @param lineCount the lineCount to set
 	 */
-	public void resetsetLineCount() {
+	protected void resetsetLineCount() {
 		this.lineCount = 0;
 	}
 
