@@ -93,57 +93,8 @@ public final class GUI extends Frame {
 	{
 		boolean form[][] = new boolean[4][4];
 		
-		switch (scene) 
-		{
-		case 0:
-			form[1][1] = true;
-			form[2][1] = true;
-			form[1][2] = true;
-			form[2][2] = true;
-			break;
-
-		case 1:
-			form[1][0] = true;
-			form[1][1] = true;
-			form[1][2] = true;
-			form[1][3] = true;
-			break;
-
-		case 2:
-			form[1][0] = true;
-			form[1][1] = true;
-			form[1][2] = true;
-			form[2][2] = true;
-			break;
-
-		case 3:
-			form[0][1] = true;
-			form[1][1] = true;
-			form[2][1] = true;
-			form[1][2] = true;
-			break;
-
-		case 4:
-			form[1][0] = true;
-			form[1][1] = true;
-			form[1][2] = true;
-			form[0][2] = true;
-			break;
-
-		case 5:
-			form[1][1] = true;
-			form[2][1] = true;
-			form[0][2] = true;
-			form[1][2] = true;
-			break;
-
-		case 6:
-			form[1][1] = true;
-			form[2][1] = true;
-			form[2][2] = true;
-			form[3][2] = true;
-			break;
-		}
+		createForm(form, scene);
+		
 		for (int j = 0; j < 4; ++j)
 		{
 			for (int i = 0; i < 4; ++i)
@@ -206,4 +157,58 @@ public final class GUI extends Frame {
 		return null;
 	}
 
+	private void createForm(boolean form[][], int scene)
+	{
+		switch (scene) 
+		{
+		case 0:
+			form[1][1] = true;
+			form[2][1] = true;
+			form[1][2] = true;
+			form[2][2] = true;
+			break;
+
+		case 1:
+			form[1][0] = true;
+			form[1][1] = true;
+			form[1][2] = true;
+			form[1][3] = true;
+			break;
+
+		case 2:
+			form[1][0] = true;
+			form[1][1] = true;
+			form[1][2] = true;
+			form[2][2] = true;
+			break;
+
+		case 3:
+			form[0][1] = true;
+			form[1][1] = true;
+			form[2][1] = true;
+			form[1][2] = true;
+			break;
+
+		case 4:
+			form[1][0] = true;
+			form[1][1] = true;
+			form[1][2] = true;
+			form[0][2] = true;
+			break;
+
+		case 5:
+			form[1][1] = true;
+			form[2][1] = true;
+			form[0][2] = true;
+			form[1][2] = true;
+			break;
+
+		case 6:
+			form[1][1] = true;
+			form[2][1] = true;
+			form[2][2] = true;
+			form[3][2] = true;
+			break;
+		}
+	}
 }

@@ -68,4 +68,5 @@ public interface IModel {
 	void togglePause();
 	
 	boolean isGameOver();
+	
 }
