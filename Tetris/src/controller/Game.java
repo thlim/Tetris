@@ -43,7 +43,7 @@ public class Game {
 
 	private void update(long time) {
 
-		if (time >= 1000 * level) {
+		if (time >= 1000 / level) {
 
 			if (coll.isCollisionAhead()) {
 				model.addBrick();
@@ -63,7 +63,7 @@ public class Game {
 		switch (state) {
 		case 0:
 			update(time);
-			if (time >= 1000 * level) {
+			if (time >= 1000 / level) {
 				view.update();
 
 				time = 0;

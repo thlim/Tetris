@@ -57,8 +57,11 @@ public final class InputHandler implements KeyListener {
 			}
 			break;
 		case 38:
-			model.turnBrick();
-			coll.resetCollisionAhead();
+			if(model.valitateBrick(model.getNextForm(), model.getPosX(), model.getPosY()))
+			{
+				model.turnBrick();
+				coll.resetCollisionAhead();
+			}
 			break;
 		}
 		/*
