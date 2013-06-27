@@ -13,10 +13,12 @@ public final class Map {
 
 	private static boolean map[][];
 	private static int mapColor[][];
+	private int lineCount;
 
 	private Map() {
 		map = new boolean[10][18];
 		mapColor = new int[10][18];
+		lineCount = 0;
 		initMapColor();
 	}
 
@@ -62,6 +64,8 @@ public final class Map {
 					break;
 				} else if (i == 9) {
 					deleteLine(j);
+					++lineCount;
+					
 					++j;
 					break;
 
@@ -93,6 +97,20 @@ public final class Map {
 
 	protected int getMapColor(int x, int y) {
 		return mapColor[x][y];
+	}
+
+	/**
+	 * @return the lineCount
+	 */
+	protected int getLineCount() {
+		return lineCount;
+	}
+
+	/**
+	 * @param lineCount the lineCount to set
+	 */
+	public void resetsetLineCount() {
+		this.lineCount = 0;
 	}
 
 }

@@ -54,4 +54,6 @@ public interface IModel {
 	boolean[][] getNextForm();
 	
 	boolean valitateBrick(boolean[][] matrix, int x, int y);
+	
+	int getLineCount();
 }

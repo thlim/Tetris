@@ -135,4 +135,10 @@ public class ModelImpl implements IModel {
 		return true;
 	}
 
+	@Override
+	public int getLineCount() {
+		// TODO Auto-generated method stub
+		return map.getLineCount();
+	}
+
 }

@@ -60,10 +60,14 @@ public class Game {
 	public boolean run() {
 
 		timer = System.currentTimeMillis();
+		
 		switch (state) {
 		case 0:
 			update(time);
 			if (time >= 1000 / level) {
+				if(model.getLineCount() == 5){
+					level = level + 2;
+				}
 				view.update();
 
 				time = 0;
