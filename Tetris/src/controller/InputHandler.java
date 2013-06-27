@@ -32,6 +32,7 @@ public final class InputHandler implements KeyListener {
 		coll = Collision.getInstance();
 	}
 
+	@Override
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		case 27:

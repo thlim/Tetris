@@ -7,8 +7,6 @@
  * 
  * Main.java
  */
-import java.util.Scanner;
-
 import controller.Game;
 
 final class Main {

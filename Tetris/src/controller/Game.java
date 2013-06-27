@@ -10,13 +10,9 @@ public class Game {
 
 	private long timer;
 	private long time;
-	private byte state;
 	private IModel model;
 	private IView view;
 	private Collision coll;
-	private boolean consoleFlag;
-	private boolean consoleOnlyFlag;
-
 	public Game(boolean console, boolean consoleOnly) {
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
@@ -26,16 +22,7 @@ public class Game {
 		view.getGui().addKeyListener(InputHandler.getInstance());
 		timer = 0;
 		time = 0;
-		state = 0;
 		
-		consoleFlag = console;
-		consoleOnlyFlag = consoleOnly;
-		if (consoleFlag) {
-			// TODO CONSOLE AKTIVIEREN
-		}
-		if (consoleOnlyFlag) {
-			// TODO CONSOLE AKTIVIEREN UND GUI DEAKTIVIEREN
-		}
 
 	}
 
