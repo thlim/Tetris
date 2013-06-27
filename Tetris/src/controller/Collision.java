@@ -71,7 +71,7 @@ public final class Collision {
 		return true;
 	}
 	
-	protected boolean checkRotationBounds()
+	protected void checkRotationBounds()
 	{
 		for(int dx = 0; dx < 4; ++dx)
 		{
@@ -100,7 +100,7 @@ public final class Collision {
 				}
 			}
 		}
-		return true;
+		
 	}
 	
 	/**

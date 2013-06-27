@@ -70,5 +70,33 @@ public class TestModelImpl {
 		model.setMapValue(0, 0, true);
 		assertTrue(model.getMapValue(0, 0));
 	}
+	
+	@Test
+	public void testMapColor(){
+		assertEquals(model.getMapColor(0, 0), -1);
+	}
+	
+	@Test
+	public void testLineCount(){
+		model.resetLineCount();
+		assertEquals(model.getLineCount(), 0);
+	}
+	
+	@Test
+	public void testGetNextForm() {
+		assertNotNull(model.getNextForm());
+	}
+	
+	@Test
+	public void testValitate(){
+		model.resetBrick(0);
+		assertTrue(model.valitateBrick(model.getNextForm(), model.getPosX(), model.getPosY()));
+	}
 
+	@Test
+	public void testValitateFalse(){
+		model.resetBrick(0);
+		model.setMapValue(2, 2, true);
+		assertFalse(model.valitateBrick(model.getNextForm(), 1, 1));
+	}
 }
