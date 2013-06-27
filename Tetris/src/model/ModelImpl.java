@@ -46,22 +46,18 @@ public class ModelImpl implements IModel {
 
 	@Override
 	public void addBrick() {
-		// TODO Auto-generated method stub
-		
 		map.addBrick(brick);
 
 	}
 
 	@Override
 	public boolean getMapValue(int x, int y) {
-		// TODO Auto-generated method stub
 
 		return map.get(x, y);
 	}
 
 	@Override
 	public void setMapValue(int x, int y, boolean value) {
-		// TODO Auto-generated method stub
 		map.set(x, y, value);
 	}
 
@@ -101,13 +97,11 @@ public class ModelImpl implements IModel {
 
 	@Override
 	public int getScene() {
-		// TODO Auto-generated method stub
 		return brick.getScene();
 	}
 
 	@Override
 	public int getMapColor(int x, int y) {
-		// TODO Auto-generated method stub
 		return map.getMapColor(x, y);
 	}
 
@@ -123,13 +117,18 @@ public class ModelImpl implements IModel {
 		{
 			for(int dx = 0; dx < 4; ++dx)
 			{
-				if(matrix[dx][dy] 
-						&& x + dx > 0 && x + dx < 10
-						&& y + dy > 0 && y + dy < 18
-						&& map.get(x + dx, y + dy))
-				{
-					return false;
+				if(matrix[dx][dy]){
+					if(x + dx > 0 && x + dx < 10){
+						if(y + dy > 0 && y + dy < 18){
+							if(y + dy > 0 && y + dy < 18){
+								if(map.get(x + dx, y + dy)){
+									return false;
+								}
+							}
+						}
+					}
 				}
+			
 			}
 		}
 		return true;
@@ -137,13 +136,11 @@ public class ModelImpl implements IModel {
 
 	@Override
 	public int getLineCount() {
-		// TODO Auto-generated method stub
 		return map.getLineCount();
 	}
 
 	@Override
 	public void resetLineCount() {
-		// TODO Auto-generated method stub
 		map.resetsetLineCount();
 	}
 
@@ -155,7 +152,7 @@ public class ModelImpl implements IModel {
 
 	@Override
 	public double getLevel() {
-		// TODO Auto-generated method stub
+		
 		return map.getLevel();
 	}
 
