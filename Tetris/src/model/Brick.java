@@ -11,8 +11,8 @@ public final class Brick {
 
 	private Brick() {
 
-		//nextScene = (int) (Math.random() * 7);
-		resetBrick(nextScene);
+		
+		resetBrick((int) (Math.random() * 7));
 	}
 
 	protected static Brick getInstance() {

@@ -55,6 +55,7 @@ public final class TUI {
 	}
 
 	private void brickPos() {
+		if(model.getPosY() >= 0){
 		for (int y = 0; y < 4; ++y) {
 			for (int x = 0; x < 4; ++x) {
 				if (model.getBrickvalue(x, y) && (model.getPosY() + y) < 18
@@ -62,6 +63,7 @@ public final class TUI {
 					tuiMap[model.getPosX() + x][model.getPosY() + y] = true;
 				}
 			}
+		}
 		}
 	}
 

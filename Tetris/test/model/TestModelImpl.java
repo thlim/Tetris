@@ -99,4 +99,9 @@ public class TestModelImpl {
 		model.setMapValue(2, 2, true);
 		assertFalse(model.valitateBrick(model.getNextForm(), 1, 1));
 	}
+	
+	@Test
+	public void testGetNextScene(){
+		assertNotNull(model.getNextScene());
+	}
 }
