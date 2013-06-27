@@ -82,6 +82,7 @@ public final class Map {
 				} else {
 					for (int x = 0; x < 10; ++x) {
 						map[x][y] = map[x][y - 1];
+						mapColor[x][y] = mapColor[x][y-1];
 					}
 
 				}
