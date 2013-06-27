@@ -111,4 +111,28 @@ public class ModelImpl implements IModel {
 		return map.getMapColor(x, y);
 	}
 
+	@Override
+	public boolean[][] getNextForm() {
+		return brick.getNextForm();
+	}
+
+	@Override
+	public boolean valitateBrick(boolean[][] matrix, int x, int y) {
+		
+		for(int dy = 0; dy < 4; ++dy)
+		{
+			for(int dx = 0; dx < 4; ++dx)
+			{
+				if(matrix[dx][dy] 
+						&& x + dx > 0 && x + dx < 10
+						&& y + dy > 0 && y + dy < 18
+						&& map.get(x + dx, y + dy))
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 }

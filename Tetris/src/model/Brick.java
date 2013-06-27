@@ -3,6 +3,7 @@ package model;
 public final class Brick {
 	private static Brick instance = null;
 	private boolean form[][];
+	private boolean nextForm[][];
 	private int scene;
 	private int posX;
 	private int posY;
@@ -28,6 +29,7 @@ public final class Brick {
 	protected void resetScene(int scene) {
 
 		form = new boolean[4][4];
+		nextForm = new boolean[4][4];
 
 		switch (scene) {
 
@@ -81,33 +83,51 @@ public final class Brick {
 			break;
 
 		}
+		nextForm[0][0] = form[0][3];
+		nextForm[1][0] = form[0][2];
+		nextForm[2][0] = form[0][1];
+		nextForm[3][0] = form[0][0];
+
+		nextForm[0][1] = form[1][3];
+		nextForm[1][1] = form[1][2];
+		nextForm[2][1] = form[1][1];
+		nextForm[3][1] = form[1][0];
+
+		nextForm[0][2] = form[2][3];
+		nextForm[1][2] = form[2][2];
+		nextForm[2][2] = form[2][1];
+		nextForm[3][2] = form[2][0];
+
+		nextForm[0][3] = form[3][3];
+		nextForm[1][3] = form[3][2];
+		nextForm[2][3] = form[3][1];
+		nextForm[3][3] = form[3][0];
 	}
 
 	protected void turn() {
-		boolean temp[][] = new boolean[4][4];
 
-		temp[0][0] = form[0][3];
-		temp[1][0] = form[0][2];
-		temp[2][0] = form[0][1];
-		temp[3][0] = form[0][0];
+		form = nextForm.clone();
+		nextForm = new boolean[4][4];
+		
+		nextForm[0][0] = form[0][3];
+		nextForm[1][0] = form[0][2];
+		nextForm[2][0] = form[0][1];
+		nextForm[3][0] = form[0][0];
 
-		temp[0][1] = form[1][3];
-		temp[1][1] = form[1][2];
-		temp[2][1] = form[1][1];
-		temp[3][1] = form[1][0];
+		nextForm[0][1] = form[1][3];
+		nextForm[1][1] = form[1][2];
+		nextForm[2][1] = form[1][1];
+		nextForm[3][1] = form[1][0];
 
-		temp[0][2] = form[2][3];
-		temp[1][2] = form[2][2];
-		temp[2][2] = form[2][1];
-		temp[3][2] = form[2][0];
+		nextForm[0][2] = form[2][3];
+		nextForm[1][2] = form[2][2];
+		nextForm[2][2] = form[2][1];
+		nextForm[3][2] = form[2][0];
 
-		temp[0][3] = form[3][3];
-		temp[1][3] = form[3][2];
-		temp[2][3] = form[3][1];
-		temp[3][3] = form[3][0];
-
-		form = temp;
-
+		nextForm[0][3] = form[3][3];
+		nextForm[1][3] = form[3][2];
+		nextForm[2][3] = form[3][1];
+		nextForm[3][3] = form[3][0];
 	}
 
 	protected void resetBrick(int style) {
@@ -153,5 +173,10 @@ public final class Brick {
 	 */
 	protected void setPosY(int posY) {
 		this.posY = posY;
+	}
+	
+	protected boolean[][] getNextForm()
+	{
+		return nextForm;
 	}
 }

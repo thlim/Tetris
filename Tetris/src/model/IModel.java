@@ -51,4 +51,7 @@ public interface IModel {
 	 */
 	int getPosY();
 
+	boolean[][] getNextForm();
+	
+	boolean valitateBrick(boolean[][] matrix, int x, int y);
 }
