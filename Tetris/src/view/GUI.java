@@ -162,6 +162,22 @@ public final class GUI extends Frame {
 	private void drawScore(Graphics g)
 	{
 		g.drawString("Level: " + model.getLevel(), 550, 300);
+		g.drawString("Press ESC to exit.", 550, 500);
+		g.drawString("Press p to pause.", 550, 520);
+		
+		if(model.getState() == 1)
+		{
+			if(model.isGameOver())
+			{
+				g.setColor(Color.red);
+				g.drawString("GAME OVER!", 400, 300);
+			}
+			else
+			{
+				g.setColor(Color.red);
+				g.drawString("Pause", 400, 300);
+			}
+		}
 	}
 
 	private Color getColor(int scene) {

@@ -170,4 +170,9 @@ public class ModelImpl implements IModel {
 		map.toggleState();
 	}
 
+	@Override
+	public boolean isGameOver() {
+		return map.isGameOver();
+	}
+
 }

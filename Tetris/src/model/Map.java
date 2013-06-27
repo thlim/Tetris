@@ -47,6 +47,11 @@ public final class Map {
 					map[b.getPosX() + x][b.getPosY() + y] = true;
 					mapColor[b.getPosX() + x][b.getPosY() + y] = b.getScene();
 				}
+				if(b.getPosY() + y < 0 && b.get(x, y))
+				{
+					state = 1;
+					gameOver = true;
+				}
 			}
 		}
 		checkLineFull();
@@ -142,5 +147,10 @@ public final class Map {
 	protected int getState()
 	{
 		return state;
+	}
+	
+	protected boolean isGameOver()
+	{
+		return gameOver;
 	}
 }

@@ -35,7 +35,7 @@ public class ViewImpl implements IView {
 	public void update() {
 		// TODO Auto-generated method stub
 		gui.repaint();
-		//tui.printGame();
+		tui.printGame();
 	}
 
 	@Override

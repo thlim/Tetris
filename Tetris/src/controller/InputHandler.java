@@ -38,26 +38,29 @@ public final class InputHandler implements KeyListener {
 			exit = true;
 			break;
 		case 37:
-			if (coll.checkBrickCollisionLeft()) {
+			if (coll.checkBrickCollisionLeft() && model.getState() == 0) {
 				model.setPosX(model.getPosX() - 1);
 			}
 			break;
 		case 39:
-			if (coll.checkBrickCollisionRight()) {
+			if (coll.checkBrickCollisionRight() && model.getState() == 0) {
 				model.setPosX(model.getPosX() + 1);
 			}
 			break;
 		case 40:
-			if (coll.checkBrickCollisionDown()) {
-				model.setPosY(model.getPosY() + 1);
-			} else {
-				model.addBrick();
-				coll.resetCollisionAhead();
-				model.resetBrick(model.getNextScene());
+			if(model.getState() == 0)
+			{
+				if (coll.checkBrickCollisionDown()) {
+					model.setPosY(model.getPosY() + 1);
+				} else {
+					model.addBrick();
+					coll.resetCollisionAhead();
+					model.resetBrick(model.getNextScene());
+				}
 			}
 			break;
 		case 38:
-			if(model.valitateBrick(model.getNextForm(), model.getPosX(), model.getPosY()))
+			if(model.valitateBrick(model.getNextForm(), model.getPosX(), model.getPosY()) && model.getState() == 0)
 			{
 				model.turnBrick();
 				coll.checkRotationBounds();
