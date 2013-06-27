@@ -34,7 +34,7 @@ final class Main {
 		boolean exit = false;
 		while (!exit) {
 			exit = g.run();
-			//System.out.println(scanner.nextInt());
+			
 		}
 		System.exit(0);
 	}

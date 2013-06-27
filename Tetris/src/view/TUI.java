@@ -50,7 +50,7 @@ public final class TUI {
 				}
 			}
 		}
-		console.printf("\n");
+		console.println("Level: " + model.getLevel());
 		resetTuiMap();
 	}
 

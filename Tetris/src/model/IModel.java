@@ -13,6 +13,8 @@ import com.google.inject.ImplementedBy;
 @ImplementedBy(ModelImpl.class)
 public interface IModel {
 
+	double getLevel();
+	
 	int getMapColor(int x, int y);
 
 	int getScene();

@@ -63,10 +63,10 @@ public final class Brick {
 			break;
 
 		case 4:
-			form[0][1] = true;
+			form[1][0] = true;
 			form[1][1] = true;
-			form[2][1] = true;
-			form[2][2] = true;
+			form[1][2] = true;
+			form[0][2] = true;
 			break;
 
 		case 5:
@@ -77,32 +77,14 @@ public final class Brick {
 			break;
 
 		case 6:
-			form[1][0] = true;
 			form[1][1] = true;
-			form[1][2] = true;
-			form[0][2] = true;
+			form[2][1] = true;
+			form[2][2] = true;
+			form[3][2] = true;
 			break;
 
 		}
-		nextForm[0][0] = form[0][3];
-		nextForm[1][0] = form[0][2];
-		nextForm[2][0] = form[0][1];
-		nextForm[3][0] = form[0][0];
-
-		nextForm[0][1] = form[1][3];
-		nextForm[1][1] = form[1][2];
-		nextForm[2][1] = form[1][1];
-		nextForm[3][1] = form[1][0];
-
-		nextForm[0][2] = form[2][3];
-		nextForm[1][2] = form[2][2];
-		nextForm[2][2] = form[2][1];
-		nextForm[3][2] = form[2][0];
-
-		nextForm[0][3] = form[3][3];
-		nextForm[1][3] = form[3][2];
-		nextForm[2][3] = form[3][1];
-		nextForm[3][3] = form[3][0];
+		initNextForm();
 		
 		nextScene = (int) (Math.random() * 7);
 	}
@@ -111,26 +93,9 @@ public final class Brick {
 
 		form = nextForm.clone();
 		nextForm = new boolean[4][4];
+		initNextForm();
 		
-		nextForm[0][0] = form[0][3];
-		nextForm[1][0] = form[0][2];
-		nextForm[2][0] = form[0][1];
-		nextForm[3][0] = form[0][0];
-
-		nextForm[0][1] = form[1][3];
-		nextForm[1][1] = form[1][2];
-		nextForm[2][1] = form[1][1];
-		nextForm[3][1] = form[1][0];
-
-		nextForm[0][2] = form[2][3];
-		nextForm[1][2] = form[2][2];
-		nextForm[2][2] = form[2][1];
-		nextForm[3][2] = form[2][0];
-
-		nextForm[0][3] = form[3][3];
-		nextForm[1][3] = form[3][2];
-		nextForm[2][3] = form[3][1];
-		nextForm[3][3] = form[3][0];
+		
 	}
 
 	protected void resetBrick(int style) {
@@ -186,5 +151,27 @@ public final class Brick {
 	protected int getNextScene()
 	{
 		return nextScene;
+	}
+	
+	private void initNextForm(){
+		nextForm[0][0] = form[0][3];
+		nextForm[1][0] = form[0][2];
+		nextForm[2][0] = form[0][1];
+		nextForm[3][0] = form[0][0];
+
+		nextForm[0][1] = form[1][3];
+		nextForm[1][1] = form[1][2];
+		nextForm[2][1] = form[1][1];
+		nextForm[3][1] = form[1][0];
+
+		nextForm[0][2] = form[2][3];
+		nextForm[1][2] = form[2][2];
+		nextForm[2][2] = form[2][1];
+		nextForm[3][2] = form[2][0];
+
+		nextForm[0][3] = form[3][3];
+		nextForm[1][3] = form[3][2];
+		nextForm[2][3] = form[3][1];
+		nextForm[3][3] = form[3][0];
 	}
 }

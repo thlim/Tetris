@@ -14,11 +14,13 @@ public final class Map {
 	private static boolean map[][];
 	private static int mapColor[][];
 	private int lineCount;
+	private double level;
 
 	private Map() {
 		map = new boolean[10][18];
 		mapColor = new int[10][18];
 		lineCount = 0;
+		level = 1.0;
 		initMapColor();
 	}
 
@@ -65,7 +67,10 @@ public final class Map {
 				} else if (i == 9) {
 					deleteLine(j);
 					++lineCount;
-					
+					if(lineCount == 1){
+					  ++level;
+					  lineCount = 0;
+					}
 					++j;
 					break;
 
@@ -111,6 +116,10 @@ public final class Map {
 	 */
 	protected void resetsetLineCount() {
 		this.lineCount = 0;
+	}
+	
+	protected double getLevel(){
+		return level;
 	}
 
 }

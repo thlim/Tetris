@@ -153,4 +153,10 @@ public class ModelImpl implements IModel {
 		return brick.getNextScene();
 	}
 
+	@Override
+	public double getLevel() {
+		// TODO Auto-generated method stub
+		return map.getLevel();
+	}
+
 }

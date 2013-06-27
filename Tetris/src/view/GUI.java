@@ -123,10 +123,10 @@ public final class GUI extends Frame {
 			break;
 
 		case 4:
-			form[0][1] = true;
+			form[1][0] = true;
 			form[1][1] = true;
-			form[2][1] = true;
-			form[2][2] = true;
+			form[1][2] = true;
+			form[0][2] = true;
 			break;
 
 		case 5:
@@ -137,10 +137,10 @@ public final class GUI extends Frame {
 			break;
 
 		case 6:
-			form[1][0] = true;
 			form[1][1] = true;
-			form[1][2] = true;
-			form[0][2] = true;
+			form[2][1] = true;
+			form[2][2] = true;
+			form[3][2] = true;
 			break;
 		}
 		for (int j = 0; j < 4; ++j)
