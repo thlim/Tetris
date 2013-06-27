@@ -97,27 +97,6 @@ public final class Collision {
 						--dy;
 						break;
 					}
-					if(model.getMapValue(model.getPosX() + dx, model.getPosY() + dy))
-					{
-						if(dx > 2)
-						{
-							model.setPosX(model.getPosX() - 1);
-							--dx;
-							break;
-						}
-						else
-						{
-							model.setPosX(model.getPosX() + 1);
-							--dx;
-							break;
-						}
-					}
-					if(model.getMapValue(model.getPosX() + dx, model.getPosY() + dy))
-					{
-						model.setPosY(model.getPosY() - 1);
-						--dy;
-						break;
-					}
 				}
 			}
 		}
