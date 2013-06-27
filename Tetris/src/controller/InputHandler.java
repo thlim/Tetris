@@ -72,11 +72,6 @@ public final class InputHandler implements KeyListener {
 			break;
 		}
 		coll.resetCollisionAhead();
-		/*
-		 * if(coll.isCollisionAhead()){ model.addBrick();
-		 * 
-		 * model.resetBrick((int)(Math.random() * 7)); }
-		 */
 		view.update();
 	}
 
