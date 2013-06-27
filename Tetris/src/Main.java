@@ -7,6 +7,8 @@
  * 
  * Main.java
  */
+import java.util.Scanner;
+
 import controller.Game;
 
 final class Main {
@@ -14,6 +16,7 @@ final class Main {
 
 		boolean console = false;
 		boolean consoleOnly = false;
+		Scanner scanner = new Scanner(System.in);
 
 		for (int i = 0; i < args.length; ++i) {
 			if (args[i].equals("-console")) {
@@ -31,6 +34,7 @@ final class Main {
 		boolean exit = false;
 		while (!exit) {
 			exit = g.run();
+			//System.out.println(scanner.nextInt());
 		}
 		System.exit(0);
 	}

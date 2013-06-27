@@ -33,10 +33,10 @@ public class Game {
 		consoleFlag = console;
 		consoleOnlyFlag = consoleOnly;
 		if (consoleFlag) {
-			// CONSOLE AKTIVIEREN
+			// TODO CONSOLE AKTIVIEREN
 		}
 		if (consoleOnlyFlag) {
-			// CONSOLE AKTIVIEREN UND GUI DEAKTIVIEREN
+			// TODO CONSOLE AKTIVIEREN UND GUI DEAKTIVIEREN
 		}
 
 	}

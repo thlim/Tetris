@@ -9,20 +9,13 @@ public class ModelImpl implements IModel {
 	private Brick brick;
 	private Map map;
 
-	private int mostLeftX;
-	private int mostLeftY;
-	private int mostRightX;
-	private int mostRightY;
-	private int mostBottomX;
-	private int mostBottomY;
-	private int lastScene;
+	
+	
 
 	@Inject
 	public ModelImpl() {
-		mostLeftX = 4;
-		mostRightX = -1;
-		mostBottomY = -1;
-		lastScene = 0;
+		
+		
 		brick = Brick.getInstance();
 		map = Map.getInstance();
 
@@ -31,9 +24,7 @@ public class ModelImpl implements IModel {
 	@Override
 	public void resetBrick(int style) {
 		// TODO Auto-generated method stub
-		mostLeftX = 4;
-		mostRightX = -1;
-		mostBottomY = -1;
+		
 
 		brick.resetBrick(style);
 
@@ -56,7 +47,7 @@ public class ModelImpl implements IModel {
 	@Override
 	public void addBrick() {
 		// TODO Auto-generated method stub
-		lastScene = brick.getScene();
+		
 		map.addBrick(brick);
 
 	}
@@ -108,118 +99,10 @@ public class ModelImpl implements IModel {
 		brick.setPosY(posY);
 	}
 
-	/**
-	 * @return the mostLeftX
-	 */
-	@Override
-	public int getMostLeftX() {
-		return mostLeftX;
-	}
-
-	/**
-	 * @param mostLeftX
-	 *            the mostLeftX to set
-	 */
-	@Override
-	public void setMostLeftX(int mostLeftX) {
-		this.mostLeftX = mostLeftX;
-	}
-
-	/**
-	 * @return the mostLeftY
-	 */
-	@Override
-	public int getMostLeftY() {
-		return mostLeftY;
-	}
-
-	/**
-	 * @param mostLeftY
-	 *            the mostLeftY to set
-	 */
-	@Override
-	public void setMostLeftY(int mostLeftY) {
-		this.mostLeftY = mostLeftY;
-	}
-
-	/**
-	 * @return the mostRightX
-	 */
-	@Override
-	public int getMostRightX() {
-		return mostRightX;
-	}
-
-	/**
-	 * @param mostRightX
-	 *            the mostRightX to set
-	 */
-	@Override
-	public void setMostRightX(int mostRightX) {
-		this.mostRightX = mostRightX;
-	}
-
-	/**
-	 * @return the mostRightY
-	 */
-	@Override
-	public int getMostRightY() {
-		return mostRightY;
-	}
-
-	/**
-	 * @param mostRightY
-	 *            the mostRightY to set
-	 */
-	@Override
-	public void setMostRightY(int mostRightY) {
-		this.mostRightY = mostRightY;
-	}
-
-	/**
-	 * @return the mostBottomX
-	 */
-	@Override
-	public int getMostBottomX() {
-		return mostBottomX;
-	}
-
-	/**
-	 * @param mostBottomX
-	 *            the mostBottomX to set
-	 */
-	@Override
-	public void setMostBottomX(int mostBottomX) {
-		this.mostBottomX = mostBottomX;
-	}
-
-	/**
-	 * @return the mostBottomY
-	 */
-	@Override
-	public int getMostBottomY() {
-		return mostBottomY;
-	}
-
-	/**
-	 * @param mostBottomY
-	 *            the mostBottomY to set
-	 */
-	@Override
-	public void setMostBottomY(int mostBottomY) {
-		this.mostBottomY = mostBottomY;
-	}
-
 	@Override
 	public int getScene() {
 		// TODO Auto-generated method stub
 		return brick.getScene();
-	}
-
-	@Override
-	public int getLastScene() {
-		// TODO Auto-generated method stub
-		return lastScene;
 	}
 
 	@Override

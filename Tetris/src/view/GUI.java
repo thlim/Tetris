@@ -68,24 +68,7 @@ public final class GUI extends Frame {
 			g.drawLine(0 + x, i * 30 + y, 300 + x, i * 30 + y);
 		}
 
-		// DRAWING DEBUG RECT
-		g.setColor(Color.yellow);
-		g.drawRect(model.getPosX() * 30 + x, model.getPosY() * 30 + y, 120, 120);
-		// DEBUG MONITOR
-		g.setColor(Color.black);
-		g.drawString("DEBUG MONITOR:", 600, 50);
-		g.drawString(
-				"ActiveBrick (" + model.getPosX() + " | " + model.getPosY()
-						+ ")", 600, 70);
-		g.drawString(
-				"most left: " + model.getMostLeftX() + " | "
-						+ model.getMostLeftY(), 600, 90);
-		g.drawString(
-				"most right: " + model.getMostRightX() + " | "
-						+ model.getMostRightY(), 600, 110);
-		g.drawString(
-				"most bottom: " + model.getMostBottomX() + " | "
-						+ model.getMostBottomY(), 600, 130);
+		
 	}
 
 	private void drawBrick(Graphics g, int x, int y) {
