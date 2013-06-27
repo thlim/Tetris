@@ -55,6 +55,7 @@ public final class GUI extends Frame {
 
 		drawMap(g, x, y);
 		drawBrick(g, x, y);
+		drawPreview(g, x, y, 4);
 
 		// DRAWING BORDERS AT THE END
 		g.setColor(Color.black);
@@ -85,6 +86,76 @@ public final class GUI extends Frame {
 			}
 		}
 
+	}
+	
+	private void drawPreview(Graphics g, int x, int y, int scene)
+	{
+		boolean form[][] = new boolean[4][4];
+		
+		switch (scene) 
+		{
+		case 0:
+			form[1][1] = true;
+			form[2][1] = true;
+			form[1][2] = true;
+			form[2][2] = true;
+			break;
+
+		case 1:
+			form[1][0] = true;
+			form[1][1] = true;
+			form[1][2] = true;
+			form[1][3] = true;
+			break;
+
+		case 2:
+			form[1][0] = true;
+			form[1][1] = true;
+			form[1][2] = true;
+			form[2][2] = true;
+			break;
+
+		case 3:
+			form[0][1] = true;
+			form[1][1] = true;
+			form[2][1] = true;
+			form[1][2] = true;
+			break;
+
+		case 4:
+			form[0][1] = true;
+			form[1][1] = true;
+			form[2][1] = true;
+			form[2][2] = true;
+			break;
+
+		case 5:
+			form[1][1] = true;
+			form[2][1] = true;
+			form[0][2] = true;
+			form[1][2] = true;
+			break;
+
+		case 6:
+			form[1][0] = true;
+			form[1][1] = true;
+			form[1][2] = true;
+			form[0][2] = true;
+			break;
+		}
+		for (int j = 0; j < 4; ++j)
+		{
+			for (int i = 0; i < 4; ++i)
+			{
+				if (form[i][j])
+				{
+					g.setColor(getColor(scene));
+					g.fillRect( (x + 500) + 30 * i, (y + 50) + 30 * j, 30, 30);
+				}
+				g.setColor(Color.black);
+				g.drawRect( (x + 500) + 30 * i, (y + 50) + 30 * j, 30, 30);
+			}
+		}
 	}
 
 	private Color getColor(int scene) {
