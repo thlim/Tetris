@@ -32,5 +32,12 @@ public class TestTUI {
 		tui.printGame();
 		assertTrue(true);
 	}
+	@Test
+	public void testPrintGame2() {
+		model.setMapValue(9, 0, true);
+		model.setPosY(0);
+		tui.printGame();
+		assertTrue(true);
+	}
 
 }

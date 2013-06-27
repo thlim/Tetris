@@ -2,24 +2,37 @@ package model;
 
 import static org.junit.Assert.*;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestModelImpl {
 
 	static ModelImpl model;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	@Before
+	public  void setUp() throws Exception {
 		model = new ModelImpl();
 	}
 
+	@Test
+	public void testTogglePause(){
+		model.togglePause();
+		model.togglePause();
+		assertEquals(model.getState(), 0);
+	}
+	@Test
+	public void testIsGameOver(){
+		model.resetBrick(0);
+		model.setPosY(-2);
+		model.addBrick();
+		assertTrue(model.isGameOver());
+	}
+	
 	@Test
 	public void testGetBrickvalue() {
 		assertNotNull(model.getBrickvalue(0, 0));
 
 	}
-
 	@Test
 	public void testResetBrick() {
 		model.resetBrick(0);
@@ -104,4 +117,5 @@ public class TestModelImpl {
 	public void testGetNextScene(){
 		assertNotNull(model.getNextScene());
 	}
+	
 }

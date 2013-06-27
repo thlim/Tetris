@@ -38,9 +38,19 @@ public class TestCollision {
 		
 		assertFalse(coll.checkBrickCollisionLeft());
 	}
+	
+	@Test
+	public void testCheckBrickCollisionLeftFalse2() {
+		model.resetBrick(0);
+		model.setPosX(0);
+		model.setPosY(0);
+		model.setMapValue(0, 1, true);
+		assertFalse(coll.checkBrickCollisionLeft());
+	}
+	
 	@Test
 	public void testCheckBrickCollisionLeftTrue() {
-		model.setPosY(18);
+		model.resetBrick(0);
 		
 		assertTrue(coll.checkBrickCollisionLeft());
 	}
@@ -51,8 +61,16 @@ public class TestCollision {
 		assertFalse(coll.checkBrickCollisionRight());
 	}
 	@Test
+	public void testCheckBrickCollisionRightFalse2() {
+		model.resetBrick(0);
+		model.setPosX(0);
+		model.setPosY(0);
+		model.setMapValue(2, 1, true);
+		assertFalse(coll.checkBrickCollisionRight());
+	}
+	@Test
 	public void testCheckBrickCollisionRightTrue() {
-		model.setPosY(18);
+		model.resetBrick(0);
 		assertTrue(coll.checkBrickCollisionRight());
 	}
 
@@ -63,8 +81,16 @@ public class TestCollision {
 		assertFalse(coll.checkBrickCollisionDown());
 	}
 	@Test
+	public void testCheckBrickCollisionDownFalse2() {
+		model.resetBrick(0);
+		model.setPosX(0);
+		model.setPosY(0);
+		model.setMapValue(1, 2, true);
+		assertFalse(coll.checkBrickCollisionDown());
+	}
+	@Test
 	public void testCheckBrickCollisionDownTrue() {
-		model.setPosX(10);
+		model.resetBrick(0);
 		assertTrue(coll.checkBrickCollisionDown());
 	}
 
