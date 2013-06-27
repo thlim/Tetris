@@ -8,7 +8,6 @@ import model.IModel;
 public final class Collision {
 
 	private IModel model;
-	private int[] distances;
 	private boolean collisionAhead;
 	private static Collision instance = null;
 
@@ -23,11 +22,6 @@ public final class Collision {
 			return instance;
 		}
 		return instance;
-	}
-
-	protected boolean checkBrickCollision() {
-
-		return true;
 	}
 
 	protected boolean checkBrickCollisionLeft() {
@@ -76,33 +70,60 @@ public final class Collision {
 		}
 		return true;
 	}
-
-	protected void getDistances() {
-		resetDistances();
-
-		for (int x = 0; x < 4; ++x) {
-			for (int y = 3; y >= 0; --y) {
-				if (model.getBrickvalue(x, y) && distances[x] == -1) {
-					while (model.getPosY() + y + distances[x] < 17
-							&& model.getPosX() < 10
-							&& !model.getMapValue(model.getPosX() + x,
-									model.getPosY() + y + distances[x])) {
-						++distances[x];
+	
+	protected boolean checkRotationBounds()
+	{
+		for(int dx = 0; dx < 4; ++dx)
+		{
+			for(int dy = 0; dy < 4; ++dy)
+			{
+				if(model.getBrickvalue(dx, dy))
+				{
+					if(model.getPosX() + dx < 0)
+					{
+						model.setPosX(model.getPosX() + 1);
+						--dx;
+						break;
 					}
-					break;
+					if(model.getPosX() + dx > 9)
+					{
+						model.setPosX(model.getPosX() - 1);
+						--dx;
+						break;
+					}
+					if(model.getPosY() + dy > 17)
+					{
+						model.setPosY(model.getPosY() - 1);
+						--dy;
+						break;
+					}
+					if(model.getMapValue(model.getPosX() + dx, model.getPosY() + dy))
+					{
+						if(dx > 2)
+						{
+							model.setPosX(model.getPosX() - 1);
+							--dx;
+							break;
+						}
+						else
+						{
+							model.setPosX(model.getPosX() + 1);
+							--dx;
+							break;
+						}
+					}
+					if(model.getMapValue(model.getPosX() + dx, model.getPosY() + dy))
+					{
+						model.setPosY(model.getPosY() - 1);
+						--dy;
+						break;
+					}
 				}
 			}
 		}
-
-		if (distances[0] == 0 || distances[1] == 0 || distances[2] == 0
-				|| distances[3] == 0) {
-			collisionAhead = true;
-		} else {
-			collisionAhead = false;
-		}
-
+		return true;
 	}
-
+	
 	/**
 	 * @return the collisionAhead
 	 */
@@ -112,13 +133,5 @@ public final class Collision {
 
 	protected void resetCollisionAhead() {
 		collisionAhead = false;
-	}
-
-	private void resetDistances() {
-		distances = new int[4];
-		for (int i = 0; i < distances.length; ++i) {
-			distances[i] = -1;
-		}
-
 	}
 }
