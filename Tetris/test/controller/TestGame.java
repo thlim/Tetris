@@ -18,7 +18,7 @@ public class TestGame {
 
 	@Before
 	public void setUpBefore() throws Exception {
-		game = new Game(false, false);
+		game = Game.getInstance();
 		coll = Collision.getInstance();
 		model = new ModelImpl();
 	}

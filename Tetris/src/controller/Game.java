@@ -1,19 +1,30 @@
 package controller;
 
 import model.IModel;
+import model.Map;
 import view.IView;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-public class Game {
+public final class Game {
 
 	private long timer;
 	private long time;
 	private IModel model;
 	private IView view;
 	private Collision coll;
-	public Game(boolean console, boolean consoleOnly) {
+	private static Game instance = null;
+	
+	public static Game getInstance() {
+		if (instance == null) {
+			instance = new Game();
+			return instance;
+		}
+		return instance;
+	}
+	
+	private Game() {
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
 
