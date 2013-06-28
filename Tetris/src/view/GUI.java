@@ -15,6 +15,14 @@ public final class GUI extends Frame {
 
 	private IModel model;
 
+	private final int width = 800;
+	private final int height = 600;
+	private final int location = 0;
+	private final int mapWidth = 10;
+	private final int mapHeight = 18;
+	private final int blockSize = 30;
+	private final int brickSize = 4;
+	
 	public static GUI getInstance() {
 		if (instance == null) {
 			instance = new GUI();
@@ -27,8 +35,8 @@ public final class GUI extends Frame {
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
 
-		setSize(800, 600);
-		setLocation(0, 0);
+		setSize(width, height);
+		setLocation(location, location);
 		setResizable(false);
 		setTitle("Tetris");
 		setBackground(Color.white);
@@ -36,13 +44,13 @@ public final class GUI extends Frame {
 	}
 
 	private void drawMap(final Graphics g, final int x, final int y) {
-		for (int j = 0; j < 18; ++j) {
-			for (int i = 0; i < 10; ++i) {
+		for (int j = 0; j < mapHeight; ++j) {
+			for (int i = 0; i < mapWidth; ++i) {
 				boolean mapvalue = model.getMapValue(i, j);
 				if (mapvalue) {
 
 					g.setColor(getColor(model.getMapColor(i, j)));
-					g.fillRect(i * 30 + x, j * 30 + y, 30, 30);
+					g.fillRect(i * blockSize + x, j * blockSize + y, blockSize, blockSize);
 				}
 			}
 		}
@@ -50,8 +58,11 @@ public final class GUI extends Frame {
 
 	@Override
 	public void paint(Graphics g) {
-		int x = 100;
-		int y = 40;
+		final int x = 100;
+		final int y = 40;
+		final int borderX = 500;
+		final int borderWidth = 300;
+		final int borderHeight = 540;
 
 		drawMap(g, x, y);
 		drawBrick(g, x, y);
@@ -60,29 +71,30 @@ public final class GUI extends Frame {
 
 		// DRAWING BORDERS AT THE END
 		g.setColor(Color.black);
-		g.drawLine(500, 0, 500, 600);
+		g.drawLine(borderX, 0, borderX, 600);
 
-		for (int j = 0; j < 11; ++j) {
-			g.drawLine(j * 30 + x, 0 + y, j * 30 + x, 540 + y);
+		for (int j = 0; j < mapWidth + 1; ++j) {
+			g.drawLine(j * blockSize + x, 0 + y, j * blockSize + x, borderHeight + y);
 		}
 
-		for (int i = 0; i < 19; ++i) {
-			g.drawLine(0 + x, i * 30 + y, 300 + x, i * 30 + y);
+		for (int i = 0; i < mapHeight + 1; ++i) {
+			g.drawLine(0 + x, i * blockSize + y, borderWidth + x, i * blockSize + y);
 		}
 
 		
 	}
 
 	private void drawBrick(Graphics g, int x, int y) {
-		for (int j = 0; j < 4; ++j) {
-			for (int i = 0; i < 4; ++i) {
+
+		for (int j = 0; j < brickSize; ++j) {
+			for (int i = 0; i < brickSize; ++i) {
 				boolean brickvalue = model.getBrickvalue(i, j);
 				if (brickvalue) {
 
 					g.setColor(getColor(model.getScene()));
 
-					g.fillRect((model.getPosX() + i) * 30 + x,
-							(model.getPosY() + j) * 30 + y, 30, 30);
+					g.fillRect((model.getPosX() + i) * blockSize + x,
+							(model.getPosY() + j) * blockSize + y, blockSize, blockSize);
 				}
 			}
 		}
@@ -95,38 +107,45 @@ public final class GUI extends Frame {
 		
 		createForm(form, scene);
 		
-		for (int j = 0; j < 4; ++j)
+		for (int j = 0; j < brickSize; ++j)
 		{
-			for (int i = 0; i < 4; ++i)
+			for (int i = 0; i < brickSize; ++i)
 			{
 				if (form[i][j])
 				{
 					g.setColor(getColor(scene));
-					g.fillRect( (x + 500) + 30 * i, (y + 50) + 30 * j, 30, 30);
+					g.fillRect( (x + 500) + blockSize * i, (y + 50) + blockSize * j, blockSize, blockSize);
 				}
 				g.setColor(Color.black);
-				g.drawRect( (x + 500) + 30 * i, (y + 50) + 30 * j, 30, 30);
+				g.drawRect( (x + 500) + blockSize * i, (y + 50) + blockSize * j, blockSize, blockSize);
 			}
 		}
 	}
 	
 	private void drawScore(Graphics g)
 	{
-		g.drawString("Level: " + model.getLevel(), 550, 300);
-		g.drawString("Press ESC to exit.", 550, 500);
-		g.drawString("Press p to pause.", 550, 520);
+		final int posX = 550;
+		final int levelPosY = 300;
+		final int escPosY = 500;
+		final int pPosY = 520;
+		final int centerX = 400;
+		final int centerY = 300;
+		
+		g.drawString("Level: " + model.getLevel(), posX, levelPosY);
+		g.drawString("Press ESC to exit.", posX, escPosY);
+		g.drawString("Press p to pause.", posX, pPosY);
 		
 		if(model.getState() == 1)
 		{
 			if(model.isGameOver())
 			{
 				g.setColor(Color.red);
-				g.drawString("GAME OVER!", 400, 300);
+				g.drawString("GAME OVER!", centerX, centerY);
 			}
 			else
 			{
 				g.setColor(Color.red);
-				g.drawString("Pause", 400, 300);
+				g.drawString("Pause", centerX, centerY);
 			}
 		}
 	}
