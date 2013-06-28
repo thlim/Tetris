@@ -61,6 +61,7 @@ public final class GUI extends Frame {
 		final int x = 100;
 		final int y = 40;
 		final int borderX = 500;
+		final int borderY = 600;
 		final int borderWidth = 300;
 		final int borderHeight = 540;
 
@@ -71,7 +72,7 @@ public final class GUI extends Frame {
 
 		// DRAWING BORDERS AT THE END
 		g.setColor(Color.black);
-		g.drawLine(borderX, 0, borderX, 600);
+		g.drawLine(borderX, 0, borderX, borderY);
 
 		for (int j = 0; j < mapWidth + 1; ++j) {
 			g.drawLine(j * blockSize + x, 0 + y, j * blockSize + x, borderHeight + y);
@@ -103,7 +104,9 @@ public final class GUI extends Frame {
 	
 	private void drawPreview(Graphics g, int x, int y, int scene)
 	{
-		boolean form[][] = new boolean[4][4];
+		boolean form[][] = new boolean[brickSize][brickSize];
+		final int posX = 500;
+		final int posY = 50;
 		
 		createForm(form, scene);
 		
@@ -114,10 +117,10 @@ public final class GUI extends Frame {
 				if (form[i][j])
 				{
 					g.setColor(getColor(scene));
-					g.fillRect( (x + 500) + blockSize * i, (y + 50) + blockSize * j, blockSize, blockSize);
+					g.fillRect( (x + posX) + blockSize * i, (y + posY) + blockSize * j, blockSize, blockSize);
 				}
 				g.setColor(Color.black);
-				g.drawRect( (x + 500) + blockSize * i, (y + 50) + blockSize * j, blockSize, blockSize);
+				g.drawRect( (x + posX) + blockSize * i, (y + posY) + blockSize * j, blockSize, blockSize);
 			}
 		}
 	}
