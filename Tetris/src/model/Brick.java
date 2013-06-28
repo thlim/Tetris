@@ -8,11 +8,14 @@ public final class Brick {
 	private int nextScene;
 	private int posX;
 	private int posY;
+	private static final int BRICK_SIZE = 4;
+	private static final int RANDOM = 7;
+	
 
 	private Brick() {
 
 		
-		resetBrick((int) (Math.random() * 7));
+		resetBrick((int) (Math.random() * RANDOM));
 	}
 
 	protected static Brick getInstance() {
@@ -29,8 +32,8 @@ public final class Brick {
 
 	protected void resetScene(int scene) {
 
-		form = new boolean[4][4];
-		nextForm = new boolean[4][4];
+		form = new boolean[BRICK_SIZE][BRICK_SIZE];
+		nextForm = new boolean[BRICK_SIZE][BRICK_SIZE];
 
 		switch (scene) {
 
@@ -86,13 +89,13 @@ public final class Brick {
 		}
 		initNextForm();
 		
-		nextScene = (int) (Math.random() * 7);
+		nextScene = (int) (Math.random() * RANDOM);
 	}
 
 	protected void turn() {
 
 		form = nextForm.clone();
-		nextForm = new boolean[4][4];
+		nextForm = new boolean[BRICK_SIZE][BRICK_SIZE];
 		initNextForm();
 		
 		
