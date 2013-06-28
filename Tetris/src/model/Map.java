@@ -18,13 +18,13 @@ public final class Map {
 	private int state;
 	private boolean gameOver;
 	
-	private static final int mapWidth = 10;
-	private static final int mapHeight = 18;
-	private static final int brickSize = 4;
+	private static final int MAP_WIDTH = 10;
+	private static final int MAP_HEIGHT = 18;
+	private static final int BRICK_SIZE = 4;
 
 	private Map() {
-		map = new boolean[mapWidth][mapHeight];
-		mapColor = new int[mapWidth][mapHeight];
+		map = new boolean[MAP_WIDTH][MAP_HEIGHT];
+		mapColor = new int[MAP_WIDTH][MAP_HEIGHT];
 		lineCount = 0;
 		level = 1.0;
 		state = 0;
@@ -34,8 +34,8 @@ public final class Map {
 
 	private void initMapColor() {
 
-		for (int y = 0; y < mapHeight; ++y) {
-			for (int x = 0; x < mapWidth; ++x) {
+		for (int y = 0; y < MAP_HEIGHT; ++y) {
+			for (int x = 0; x < MAP_WIDTH; ++x) {
 				mapColor[x][y] = -1;
 			}
 		}
@@ -43,11 +43,11 @@ public final class Map {
 	}
 
 	protected void addBrick(Brick b) {
-		for (int y = 0; y < brickSize; ++y) {
-			for (int x = 0; x < brickSize; ++x) {
-				if (b.get(x, y) && (b.getPosY() + y) < mapHeight
+		for (int y = 0; y < BRICK_SIZE; ++y) {
+			for (int x = 0; x < BRICK_SIZE; ++x) {
+				if (b.get(x, y) && (b.getPosY() + y) < MAP_HEIGHT
 						&& (b.getPosY() + y >= 0)
-						&& (b.getPosX() + x) < mapWidth) {
+						&& (b.getPosX() + x) < MAP_WIDTH) {
 					map[b.getPosX() + x][b.getPosY() + y] = true;
 					mapColor[b.getPosX() + x][b.getPosY() + y] = b.getScene();
 				}
@@ -71,14 +71,14 @@ public final class Map {
 
 	private void checkLineFull() {
 
-		for (int j = mapHeight - 1; j >= 0; --j) {
+		for (int j = MAP_HEIGHT - 1; j >= 0; --j) {
 			int i = 0;
 
-			while (i < mapWidth) {
+			while (i < MAP_WIDTH) {
 				boolean mapvalue = map[i][j];
 				if (!mapvalue) {
 					break;
-				} else if (i == mapWidth - 1) {
+				} else if (i == MAP_WIDTH - 1) {
 					deleteLine(j);
 					++lineCount;
 					if(lineCount == 1){
@@ -103,7 +103,7 @@ public final class Map {
 				if (y == 0) {
 					break;
 				} else {
-					for (int x = 0; x < mapWidth; ++x) {
+					for (int x = 0; x < MAP_WIDTH; ++x) {
 						map[x][y] = map[x][y - 1];
 						mapColor[x][y] = mapColor[x][y-1];
 					}

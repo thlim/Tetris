@@ -15,13 +15,13 @@ public final class GUI extends Frame {
 
 	private IModel model;
 
-	private final int width = 800;
-	private final int height = 600;
-	private final int location = 0;
-	private final int mapWidth = 10;
-	private final int mapHeight = 18;
-	private final int blockSize = 30;
-	private final int brickSize = 4;
+	private static final int WIDTH = 800;
+	private static final int HEIGHT = 600;
+	private static final int LOCATION = 0;
+	private static final int MAPWIDTH = 10;
+	private static final int MAP_HEIGHT = 18;
+	private static final int BLOCK_SIZE = 30;
+	private static final int BRICK_SIZE = 4;
 	
 	public static GUI getInstance() {
 		if (instance == null) {
@@ -35,8 +35,8 @@ public final class GUI extends Frame {
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
 
-		setSize(width, height);
-		setLocation(location, location);
+		setSize(WIDTH, HEIGHT);
+		setLocation(LOCATION, LOCATION);
 		setResizable(false);
 		setTitle("Tetris");
 		setBackground(Color.white);
@@ -44,13 +44,13 @@ public final class GUI extends Frame {
 	}
 
 	private void drawMap(final Graphics g, final int x, final int y) {
-		for (int j = 0; j < mapHeight; ++j) {
-			for (int i = 0; i < mapWidth; ++i) {
+		for (int j = 0; j < MAP_HEIGHT; ++j) {
+			for (int i = 0; i < MAPWIDTH; ++i) {
 				boolean mapvalue = model.getMapValue(i, j);
 				if (mapvalue) {
 
 					g.setColor(getColor(model.getMapColor(i, j)));
-					g.fillRect(i * blockSize + x, j * blockSize + y, blockSize, blockSize);
+					g.fillRect(i * BLOCK_SIZE + x, j * BLOCK_SIZE + y, BLOCK_SIZE, BLOCK_SIZE);
 				}
 			}
 		}
@@ -74,12 +74,12 @@ public final class GUI extends Frame {
 		g.setColor(Color.black);
 		g.drawLine(borderX, 0, borderX, borderY);
 
-		for (int j = 0; j < mapWidth + 1; ++j) {
-			g.drawLine(j * blockSize + x, 0 + y, j * blockSize + x, borderHeight + y);
+		for (int j = 0; j < MAPWIDTH + 1; ++j) {
+			g.drawLine(j * BLOCK_SIZE + x, 0 + y, j * BLOCK_SIZE + x, borderHeight + y);
 		}
 
-		for (int i = 0; i < mapHeight + 1; ++i) {
-			g.drawLine(0 + x, i * blockSize + y, borderWidth + x, i * blockSize + y);
+		for (int i = 0; i < MAP_HEIGHT + 1; ++i) {
+			g.drawLine(0 + x, i * BLOCK_SIZE + y, borderWidth + x, i * BLOCK_SIZE + y);
 		}
 
 		
@@ -87,15 +87,15 @@ public final class GUI extends Frame {
 
 	private void drawBrick(Graphics g, int x, int y) {
 
-		for (int j = 0; j < brickSize; ++j) {
-			for (int i = 0; i < brickSize; ++i) {
+		for (int j = 0; j < BRICK_SIZE; ++j) {
+			for (int i = 0; i < BRICK_SIZE; ++i) {
 				boolean brickvalue = model.getBrickvalue(i, j);
 				if (brickvalue) {
 
 					g.setColor(getColor(model.getScene()));
 
-					g.fillRect((model.getPosX() + i) * blockSize + x,
-							(model.getPosY() + j) * blockSize + y, blockSize, blockSize);
+					g.fillRect((model.getPosX() + i) * BLOCK_SIZE + x,
+							(model.getPosY() + j) * BLOCK_SIZE + y, BLOCK_SIZE, BLOCK_SIZE);
 				}
 			}
 		}
@@ -104,23 +104,23 @@ public final class GUI extends Frame {
 	
 	private void drawPreview(Graphics g, int x, int y, int scene)
 	{
-		boolean form[][] = new boolean[brickSize][brickSize];
+		boolean form[][] = new boolean[BRICK_SIZE][BRICK_SIZE];
 		final int posX = 500;
 		final int posY = 50;
 		
 		createForm(form, scene);
 		
-		for (int j = 0; j < brickSize; ++j)
+		for (int j = 0; j < BRICK_SIZE; ++j)
 		{
-			for (int i = 0; i < brickSize; ++i)
+			for (int i = 0; i < BRICK_SIZE; ++i)
 			{
 				if (form[i][j])
 				{
 					g.setColor(getColor(scene));
-					g.fillRect( (x + posX) + blockSize * i, (y + posY) + blockSize * j, blockSize, blockSize);
+					g.fillRect( (x + posX) + BLOCK_SIZE * i, (y + posY) + BLOCK_SIZE * j, BLOCK_SIZE, BLOCK_SIZE);
 				}
 				g.setColor(Color.black);
-				g.drawRect( (x + posX) + blockSize * i, (y + posY) + blockSize * j, blockSize, blockSize);
+				g.drawRect( (x + posX) + BLOCK_SIZE * i, (y + posY) + BLOCK_SIZE * j, BLOCK_SIZE, BLOCK_SIZE);
 			}
 		}
 	}

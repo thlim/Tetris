@@ -16,12 +16,12 @@ public final class InputHandler implements KeyListener {
 	private IView view;
 	private boolean exit;
 	private Collision coll;
-	private static final int esc = 27;
-	private static final int left = 37;
-	private static final int right = 39;
-	private static final int down = 40;
-	private static final int up = 38;
-	private static final int p = 80;
+	private static final int ESC = 27;
+	private static final int LEFT = 37;
+	private static final int RIGHT = 39;
+	private static final int DOWN = 40;
+	private static final int UP = 38;
+	private static final int P = 80;
 
 	public static InputHandler getInstance() {
 		if (instance == null) {
@@ -41,20 +41,20 @@ public final class InputHandler implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
-		case esc:
+		case ESC:
 			exit = true;
 			break;
-		case left:
+		case LEFT:
 			if (coll.checkBrickCollisionLeft() && model.getState() == 0) {
 				model.setPosX(model.getPosX() - 1);
 			}
 			break;
-		case right:
+		case RIGHT:
 			if (coll.checkBrickCollisionRight() && model.getState() == 0) {
 				model.setPosX(model.getPosX() + 1);
 			}
 			break;
-		case down:
+		case DOWN:
 			if (model.getState() == 0) {
 				if (coll.checkBrickCollisionDown()) {
 					model.setPosY(model.getPosY() + 1);
@@ -65,7 +65,7 @@ public final class InputHandler implements KeyListener {
 				}
 			}
 			break;
-		case up:
+		case UP:
 			if (model.valitateBrick(model.getNextForm(), model.getPosX(),
 					model.getPosY())
 					&& model.getState() == 0) {
@@ -73,7 +73,7 @@ public final class InputHandler implements KeyListener {
 				coll.checkRotationBounds();
 			}
 			break;
-		case p:
+		case P:
 			model.togglePause();
 			break;
 		}

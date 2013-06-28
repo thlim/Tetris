@@ -14,7 +14,7 @@ public final class Game {
 	private IView view;
 	private Collision coll;
 	private static Game instance = null;
-	private static final int timeMulti = 1000;
+	private static final int MULTI = 1000;
 	
 	public static Game getInstance() {
 		if (instance == null) {
@@ -39,7 +39,7 @@ public final class Game {
 
 	private void update(long time) {
 
-		if (time >= timeMulti / model.getLevel()) {
+		if (time >= MULTI / model.getLevel()) {
 
 			if (coll.isCollisionAhead()) {
 				model.addBrick();
@@ -60,7 +60,7 @@ public final class Game {
 		switch (model.getState()) {
 		case 0:
 			update(time);
-			if (time >= timeMulti / model.getLevel()) {
+			if (time >= MULTI / model.getLevel()) {
 				
 				view.update();
 
