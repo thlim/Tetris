@@ -9,9 +9,9 @@ public class ModelImpl implements IModel {
 	private Brick brick;
 	private Map map;
 
-	private final int brickMax = 4;
-	private final int colMax = 10;
-	private final int lineMax = 18;
+	private static final int brickMax = 4;
+	private static final int colMax = 10;
+	private static final int lineMax = 18;
 
 	@Inject
 	public ModelImpl() {
