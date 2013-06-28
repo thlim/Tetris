@@ -12,6 +12,9 @@ public final class TUI {
 	private PrintStream console;
 	private IModel model;
 	private boolean tuiMap[][];
+	private final int colMax = 10;
+	private final int lineMax = 18;
+	private final int brickMax = 4;
 
 	protected static TUI getInstance() {
 		if (instance == null) {
@@ -25,24 +28,24 @@ public final class TUI {
 		console = System.out;
 		Injector injector = Guice.createInjector();
 		model = injector.getInstance(IModel.class);
-		tuiMap = new boolean[10][18];
+		tuiMap = new boolean[colMax][lineMax];
 	}
 
 	protected void printGame() {
 		brickPos();
-		for (int j = 0; j < 18; ++j) {
-			for (int i = 0; i < 10; ++i) {
+		for (int j = 0; j < lineMax; ++j) {
+			for (int i = 0; i < colMax; ++i) {
 				boolean mapvalue = model.getMapValue(i, j);
 				boolean tuiMapValue = tuiMap[i][j];
 				if (mapvalue || tuiMapValue) {
-					if (i == 9) {
+					if (i == colMax -1) {
 						console.printf("|X|\n");
 					} else {
 						console.printf("|X");
 					}
 				} else {
 
-					if (i == 9) {
+					if (i == colMax -1) {
 						console.printf("|_|\n");
 					} else {
 						console.printf("|_");
@@ -56,10 +59,10 @@ public final class TUI {
 
 	private void brickPos() {
 		if(model.getPosY() >= 0){
-		for (int y = 0; y < 4; ++y) {
-			for (int x = 0; x < 4; ++x) {
-				if (model.getBrickvalue(x, y) && (model.getPosY() + y) < 18
-						&& (model.getPosX() + x) < 10) {
+		for (int y = 0; y < brickMax; ++y) {
+			for (int x = 0; x < brickMax; ++x) {
+				if (model.getBrickvalue(x, y) && (model.getPosY() + y) < lineMax
+						&& (model.getPosX() + x) < colMax) {
 					tuiMap[model.getPosX() + x][model.getPosY() + y] = true;
 				}
 			}
@@ -68,6 +71,6 @@ public final class TUI {
 	}
 
 	private void resetTuiMap() {
-		tuiMap = new boolean[10][18];
+		tuiMap = new boolean[colMax][lineMax];
 	}
 }
