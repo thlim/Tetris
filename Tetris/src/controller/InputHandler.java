@@ -16,14 +16,13 @@ public final class InputHandler implements KeyListener {
 	private IView view;
 	private boolean exit;
 	private Collision coll;
-	private final int esc = 27;
-	private final int left = 37;
-	private final int right = 39;
-	private final int down = 40;
-	private final int up = 38;
-	private final int p = 80;
+	private static final int esc = 27;
+	private static final int left = 37;
+	private static final int right = 39;
+	private static final int down = 40;
+	private static final int up = 38;
+	private static final int p = 80;
 
-	
 	public static InputHandler getInstance() {
 		if (instance == null) {
 			instance = new InputHandler();
@@ -56,8 +55,7 @@ public final class InputHandler implements KeyListener {
 			}
 			break;
 		case down:
-			if(model.getState() == 0)
-			{
+			if (model.getState() == 0) {
 				if (coll.checkBrickCollisionDown()) {
 					model.setPosY(model.getPosY() + 1);
 				} else {
@@ -68,8 +66,9 @@ public final class InputHandler implements KeyListener {
 			}
 			break;
 		case up:
-			if(model.valitateBrick(model.getNextForm(), model.getPosX(), model.getPosY()) && model.getState() == 0)
-			{
+			if (model.valitateBrick(model.getNextForm(), model.getPosX(),
+					model.getPosY())
+					&& model.getState() == 0) {
 				model.turnBrick();
 				coll.checkRotationBounds();
 			}
