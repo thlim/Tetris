@@ -9,8 +9,9 @@ public class ModelImpl implements IModel {
 	private Brick brick;
 	private Map map;
 
-	
-	
+	private final int brickMax = 4;
+	private final int colMax = 10;
+	private final int lineMax = 18;
 
 	@Inject
 	public ModelImpl() {
@@ -113,18 +114,18 @@ public class ModelImpl implements IModel {
 	@Override
 	public boolean valitateBrick(boolean[][] matrix, int x, int y) {
 		
-		for(int dy = 0; dy < 4; ++dy)
+		for(int dy = 0; dy < brickMax; ++dy)
 		{
-			for(int dx = 0; dx < 4; ++dx)
+			for(int dx = 0; dx < brickMax; ++dx)
 			{
 				if(matrix[dx][dy]){
-					if(x + dx > 0 && x + dx < 10){
-						if(y + dy > 0 && y + dy < 18){
-							if(y + dy > 0 && y + dy < 18){
+					if(x + dx > 0 && x + dx < colMax){
+						if(y + dy > 0 && y + dy < lineMax){
+							
 								if(map.get(x + dx, y + dy)){
 									return false;
 								}
-							}
+							
 						}
 					}
 				}
