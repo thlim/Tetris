@@ -16,7 +16,14 @@ public final class InputHandler implements KeyListener {
 	private IView view;
 	private boolean exit;
 	private Collision coll;
+	private final int esc = 27;
+	private final int left = 37;
+	private final int right = 39;
+	private final int down = 40;
+	private final int up = 38;
+	private final int p = 80;
 
+	
 	public static InputHandler getInstance() {
 		if (instance == null) {
 			instance = new InputHandler();
@@ -35,20 +42,20 @@ public final class InputHandler implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
-		case 27:
+		case esc:
 			exit = true;
 			break;
-		case 37:
+		case left:
 			if (coll.checkBrickCollisionLeft() && model.getState() == 0) {
 				model.setPosX(model.getPosX() - 1);
 			}
 			break;
-		case 39:
+		case right:
 			if (coll.checkBrickCollisionRight() && model.getState() == 0) {
 				model.setPosX(model.getPosX() + 1);
 			}
 			break;
-		case 40:
+		case down:
 			if(model.getState() == 0)
 			{
 				if (coll.checkBrickCollisionDown()) {
@@ -60,14 +67,14 @@ public final class InputHandler implements KeyListener {
 				}
 			}
 			break;
-		case 38:
+		case up:
 			if(model.valitateBrick(model.getNextForm(), model.getPosX(), model.getPosY()) && model.getState() == 0)
 			{
 				model.turnBrick();
 				coll.checkRotationBounds();
 			}
 			break;
-		case 80:
+		case p:
 			model.togglePause();
 			break;
 		}
