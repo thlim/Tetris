@@ -11,9 +11,9 @@ public final class Collision {
 	private boolean collisionAhead;
 	private static Collision instance = null;
 	
-	private final int mapWidth = 10;
-	private final int mapHeight = 18;
-	private final int brickSize = 4;
+	private static final int mapWidth = 10;
+	private static final int mapHeight = 18;
+	private static final int brickSize = 4;
 
 	private Collision() {
 		Injector injector = Guice.createInjector();

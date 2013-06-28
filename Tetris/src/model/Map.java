@@ -18,9 +18,9 @@ public final class Map {
 	private int state;
 	private boolean gameOver;
 	
-	private final int mapWidth = 10;
-	private final int mapHeight = 18;
-	private final int brickSize = 4;
+	private static final int mapWidth = 10;
+	private static final int mapHeight = 18;
+	private static final int brickSize = 4;
 
 	private Map() {
 		map = new boolean[mapWidth][mapHeight];
@@ -103,7 +103,7 @@ public final class Map {
 				if (y == 0) {
 					break;
 				} else {
-					for (int x = 0; x < 10; ++x) {
+					for (int x = 0; x < mapWidth; ++x) {
 						map[x][y] = map[x][y - 1];
 						mapColor[x][y] = mapColor[x][y-1];
 					}

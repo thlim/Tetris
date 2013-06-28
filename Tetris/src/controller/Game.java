@@ -1,7 +1,6 @@
 package controller;
 
 import model.IModel;
-import model.Map;
 import view.IView;
 
 import com.google.inject.Guice;
@@ -15,7 +14,7 @@ public final class Game {
 	private IView view;
 	private Collision coll;
 	private static Game instance = null;
-	private final int timeMulti = 1000;
+	private static final int timeMulti = 1000;
 	
 	public static Game getInstance() {
 		if (instance == null) {
